@@ -14,22 +14,12 @@ public class Usuario {
 		TI,
 		PASAPORTE
 	}
-	
-	public enum ROLES {
-		CLIENTE,
-		RECEPCIONISTA,
-		EMPLEADO,
-		ADMIN,
-		GERENTE
-	}
-	
+
 	private String nombre;
 	
 	private TIPOS_DE_DOCUMENTO tipoIdentificacion;
-	
-	private ROLES rol;
-	
-	private String numeroIdentificacion;
+		
+	private Long numeroIdentificacion;
 	
 	private String correoElectronico;
 	
@@ -37,8 +27,7 @@ public class Usuario {
 	{
 		this.nombre = "";
 		this.tipoIdentificacion = null;
-		this.rol = null;
-		this.numeroIdentificacion = "";
+		this.numeroIdentificacion = null;
 		this.correoElectronico = "";
 	}
 
@@ -49,11 +38,10 @@ public class Usuario {
 	 * @param numeroIdentificacion
 	 * @param correoElectronico
 	 */
-	public Usuario(String nombre, TIPOS_DE_DOCUMENTO tipoIdentificacion, ROLES rol, String numeroIdentificacion,
+	public Usuario(String nombre, TIPOS_DE_DOCUMENTO tipoIdentificacion, Long numeroIdentificacion,
 			String correoElectronico) {
 		this.nombre = nombre;
 		this.tipoIdentificacion = tipoIdentificacion;
-		this.rol = rol;
 		this.numeroIdentificacion = numeroIdentificacion;
 		this.correoElectronico = correoElectronico;
 	}
@@ -87,30 +75,16 @@ public class Usuario {
 	}
 
 	/**
-	 * @return the rol
-	 */
-	public ROLES getRol() {
-		return rol;
-	}
-
-	/**
-	 * @param rol the rol to set
-	 */
-	public void setRol(ROLES rol) {
-		this.rol = rol;
-	}
-
-	/**
 	 * @return the numeroIdentificacion
 	 */
-	public String getNumeroIdentificacion() {
+	public Long getNumeroIdentificacion() {
 		return numeroIdentificacion;
 	}
 
 	/**
 	 * @param numeroIdentificacion the numeroIdentificacion to set
 	 */
-	public void setNumeroIdentificacion(String numeroIdentificacion) {
+	public void setNumeroIdentificacion(Long numeroIdentificacion) {
 		this.numeroIdentificacion = numeroIdentificacion;
 	}
 
