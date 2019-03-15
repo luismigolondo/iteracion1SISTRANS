@@ -20,7 +20,7 @@ public class Reserva {
 		HABITACION_SENCILLA
 	}
 	
-	private Integer id;
+	private Long id;
 	
 	private TIPOS_DE_RESERVA tipo;
 	
@@ -33,7 +33,7 @@ public class Reserva {
 	private boolean checkedOut;
 	
 	public Reserva () {
-		this.id = 0;
+		this.id = null;
 		this.tipo = null;
 		this.fechaInicio = null;
 		this.fechaFin = null;
@@ -49,7 +49,7 @@ public class Reserva {
 	 * @param checkedIn
 	 * @param checkedOut
 	 */
-	public Reserva(Integer id, TIPOS_DE_RESERVA tipo, Date fechaInicio, Date fechaFin, boolean checkedIn,
+	public Reserva(Long id, TIPOS_DE_RESERVA tipo, Date fechaInicio, Date fechaFin, boolean checkedIn,
 			boolean checkedOut) {
 		this.id = id;
 		this.tipo = tipo;
@@ -64,14 +64,14 @@ public class Reserva {
 	/**
 	 * @return the id
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

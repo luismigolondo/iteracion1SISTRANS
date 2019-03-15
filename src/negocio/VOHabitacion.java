@@ -1,7 +1,7 @@
 package negocio;
 
 /**
- * 
+ * Interfaz para los metodos get de Habitacion
  * @author jd.diazc
  *
  */
