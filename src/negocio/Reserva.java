@@ -49,14 +49,13 @@ public class Reserva implements VOReserva{
 	 * @param checkedIn
 	 * @param checkedOut
 	 */
-	public Reserva(Long id, TIPOS_DE_RESERVA tipo, Date fechaInicio, Date fechaFin, boolean checkedIn,
-			boolean checkedOut) {
+	public Reserva(Long id, TIPOS_DE_RESERVA tipo, Date fechaInicio, Date fechaFin) {
 		this.id = id;
 		this.tipo = tipo;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
-		this.checkedIn = checkedIn;
-		this.checkedOut = checkedOut;
+		this.checkedIn = false;
+		this.checkedOut = false;
 	}
 
 
@@ -127,7 +126,7 @@ public class Reserva implements VOReserva{
 	/**
 	 * @param checkedIn the checkedIn to set
 	 */
-	public void setCheckedIn(boolean checkedIn) {
+	public void setCheckIn(boolean checkedIn) {
 		this.checkedIn = checkedIn;
 	}
 

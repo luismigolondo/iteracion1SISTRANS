@@ -1,11 +1,16 @@
 package persistencia;
 
+import java.sql.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
+
+import com.google.gson.JsonObject;
+
+import negocio.Reserva;
 
 public class PersistenciaHoteles {
 
@@ -95,7 +100,21 @@ public class PersistenciaHoteles {
 		crearClasesSQL();
 	}
 	
+	private PersistenciaHoteles(JsonObject configTabla)
+	{
+		crearClasesSQL();
+		tablas = leerNombresTablas(configTabla);
+		
+		String unidadPersistencia = configTabla.get("unidadPersistencia").getAsString();
+		log.trace("Se esta accediendo a la persistencia: " + unidadPersistencia);
+		pmf = JDOHelper.getPersistenceManagerFactory(unidadPersistencia);		
+	}
 	
+	private List<String> leerNombresTablas(JsonObject configTabla) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	private void crearClasesSQL ()
 	{
 		sqlBares = new SQLBares(this);
@@ -154,5 +173,37 @@ public class PersistenciaHoteles {
 		tablas.add("TIPO_SALON");
 		tablas.add("TIPO_UTENSILIO");
 	}
+
+	public static PersistenciaHoteles getInstance() {
+		if(instance == null)
+			instance = new PersistenciaHoteles();
+		return instance;
+	}
+	
+	public static PersistenciaHoteles getInstance(JsonObject configuracionTabla) {
+		if(instance == null)
+			instance = new PersistenciaHoteles(configuracionTabla);
+		return instance;
+	}
+
+
+	public void cerrarPersistencia() {
+		pmf.close();
+		instance = null;
+	}
+
+
+	public Reserva adicionarReserva(Long pId, Long pIdHotel, Long pIdCliente, int pTipoID, Long pPlanDeConsumo,
+			int pTipoReserva, Date pFechaInicio, Date pFechaFin) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Reserva registrarLlegada(Long pIdReserva, Long pIdCliente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
