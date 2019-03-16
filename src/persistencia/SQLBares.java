@@ -1,6 +1,6 @@
 package persistencia;
 
-public class SQLTipo_Salon {
+public class SQLBares {
 
 	/* ****************************************************************
 	 * 			Atributos
@@ -15,9 +15,9 @@ public class SQLTipo_Salon {
 	 *****************************************************************/
 	/**
 	 * Constructor
-	 * @param ph - El Manejador de persistencia de la aplicación
+	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLTipo_Salon(PersistenciaHoteles ph)
+	public SQLBares(PersistenciaHoteles ph)
 	{
 		this.ph = ph;
 	}
