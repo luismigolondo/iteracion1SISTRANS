@@ -7,9 +7,13 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Hotel {
+public class Hotel implements VOHotel{
 	
-	public Integer estrellas;
+	private Integer estrellas;
+	
+	private String nombre;
+
+	private Long id;
 	
 	public Hotel() {
 		estrellas = 0;
@@ -33,6 +37,32 @@ public class Hotel {
 		this.estrellas = estrellas;
 	}
 	
-	
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 }

@@ -7,7 +7,7 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Habitacion {
+public class Habitacion implements VOHabitacion{
 
 	public enum TIPOS_DE_HABITACION {
 		SUITE,

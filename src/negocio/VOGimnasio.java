@@ -25,13 +25,13 @@ public interface VOGimnasio {
 	 * 
 	 * @return la hora de apertura del gimnasio
 	 */
-	public Date horaApertura();
+	public Date getHoraApertura();
 	
 	/**
 	 * 
 	 * @return la hora de cierre del gimnasio
 	 */
-	public Date horaCierre();
+	public Date getHoraCierre();
 	
 	/**
 	 * 

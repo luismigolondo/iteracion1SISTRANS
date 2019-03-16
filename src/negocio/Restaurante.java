@@ -7,7 +7,7 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Restaurante {
+public class Restaurante implements VORestaurante {
 
 	public enum ESTILOS_RESTAURANTES {
 		ITALIANO,

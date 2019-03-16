@@ -7,7 +7,7 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Servicio {
+public class Servicio implements VOServicio{
 
 	public Servicio () {
 		

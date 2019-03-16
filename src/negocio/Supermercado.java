@@ -7,7 +7,7 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Supermercado {
+public class Supermercado implements VOSupermercado{
 
 	private String nombre;
 	

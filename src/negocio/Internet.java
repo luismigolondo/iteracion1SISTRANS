@@ -7,7 +7,7 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Internet {
+public class Internet implements VOInternet {
 
 	private Double capacidad;
 	

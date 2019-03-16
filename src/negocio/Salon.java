@@ -7,13 +7,14 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Salon {
+public class Salon implements VOSalon{
 
 	public enum TIPOS_SALONES {
 		SALON_REUNIONES,
 		SALON_CONFERENCIAS
 	}
-	
+	private String nombre;
+
 	private TIPOS_SALONES tipo;
 	
 	private Integer capacidad;
@@ -117,6 +118,18 @@ public class Salon {
 		this.descripcion = descripcion;
 	}
 	
-	
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	
 }

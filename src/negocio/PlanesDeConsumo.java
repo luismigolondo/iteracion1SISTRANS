@@ -7,7 +7,7 @@ package negocio;
  * @author luisgomez
  *
  */
-public class PlanesDeConsumo {
+public class PlanesDeConsumo implements VOPlanesDeConsumo{
 
 	public enum PLANES_DE_CONSUMO {
 		LARGA_ESTADIA,

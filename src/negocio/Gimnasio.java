@@ -9,7 +9,7 @@ import java.util.Date;
  * @author luisgomez
  *
  */
-public class Gimnasio {
+public class Gimnasio implements VOGimnasio {
 
 	private String nombre;
 	
@@ -133,7 +133,5 @@ public class Gimnasio {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
 	
 }

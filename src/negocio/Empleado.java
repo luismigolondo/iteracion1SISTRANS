@@ -2,7 +2,7 @@ package negocio;
 
 import negocio.Usuario.TIPOS_DE_DOCUMENTO;
 
-public class Empleado {
+public class Empleado implements VOEmpleado{
 
 	public enum ROLES {
 		RECEPCIONISTA,

@@ -7,7 +7,7 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Usuario {
+public class Usuario implements VOUsuario {
 
 	public enum TIPOS_DE_DOCUMENTO {
 		CC,

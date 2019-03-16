@@ -7,7 +7,7 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Bar {
+public class Bar implements VOBar {
 
 	public enum ESTILOS_BARES {
 		JAZZ,
