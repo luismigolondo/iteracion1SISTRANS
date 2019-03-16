@@ -8,7 +8,7 @@ public class SQLTipo_Rol {
 	/**
 	 * El manejador de persistencia general de la aplicación
 	 */
-	private PersistenciaHoteles ph;
+	private PersistenciaCadenaHoteles ph;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -17,7 +17,7 @@ public class SQLTipo_Rol {
 	 * Constructor
 	 * @param ph - El Manejador de persistencia de la aplicación
 	 */
-	public SQLTipo_Rol(PersistenciaHoteles ph)
+	public SQLTipo_Rol(PersistenciaCadenaHoteles ph)
 	{
 		this.ph = ph;
 	}

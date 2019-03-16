@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import com.google.gson.JsonObject;
 
-import persistencia.PersistenciaHoteles;
+import persistencia.PersistenciaCadenaHoteles;
 
 /**
  * @author lm.gomezl
@@ -17,14 +17,14 @@ import persistencia.PersistenciaHoteles;
 public class CadenaHoteles {
 	private static Logger log = Logger.getLogger(Hotel.class.getName());
 
-	private PersistenciaHoteles persistencia;
+	private PersistenciaCadenaHoteles persistencia;
 	
 	public CadenaHoteles() {
-		persistencia = PersistenciaHoteles.getInstance();
+		persistencia = PersistenciaCadenaHoteles.getInstance();
 	}
 	public CadenaHoteles(JsonObject configuracionTabla)
 	{
-		persistencia = PersistenciaHoteles.getInstance(configuracionTabla);
+		persistencia = PersistenciaCadenaHoteles.getInstance(configuracionTabla);
 	}
 	
 	public void cerrarPersistencia() {
