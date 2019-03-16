@@ -1,7 +1,7 @@
 package negocio;
 
 import negocio.Empleado.ROLES;
-import negocio.Usuario.TIPOS_DE_DOCUMENTO;
+import negocio.Cliente.TIPOS_DE_DOCUMENTO;
 
 public interface VOEmpleado {
 
