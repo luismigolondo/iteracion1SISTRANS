@@ -19,5 +19,5 @@ public interface VOPrestamo {
 	 * 
 	 * @return la condicion de entrega
 	 */
-	public String getCondicionDeEntrega();
+	public Double getCosto();
 }

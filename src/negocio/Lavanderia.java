@@ -7,13 +7,14 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Lavanderia {
+public class Lavanderia implements VOLavanderia{
 
 	public enum TIPO_LAVADO {
 		LAVADO,
 		PLANCHADO,
 		EMBOLADO
 	}
+	private String nombre;
 	
 	private Integer numPrendas;
 	
@@ -80,6 +81,19 @@ public class Lavanderia {
 		this.tipo = tipo;
 	}
 	
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	
 	
 }

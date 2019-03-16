@@ -9,7 +9,7 @@ import java.util.Date;
  * @author luisgomez
  *
  */
-public class Reserva {
+public class Reserva implements VOReserva{
 
 	public enum TIPOS_DE_RESERVA {
 		SPA,
@@ -143,7 +143,6 @@ public class Reserva {
 	 */
 	public void setCheckedOut(boolean checkedOut) {
 		this.checkedOut = checkedOut;
-	}
-	
+	}	
 	
 }

@@ -34,11 +34,11 @@ public interface VOReserva {
 	 * 
 	 * @return  el checkIn
 	 */
-	public Boolean getCheckedIn();
+	public boolean isCheckedIn();
 	
 	/**
 	 * 
 	 * @return el checkOut
 	 */
-	public Boolean getCheckedOut();
+	public boolean isCheckedOut();
 }

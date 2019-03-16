@@ -11,6 +11,12 @@ public interface VOSalon {
 
 	/**
 	 * 
+	 * @return el nombre
+	 */
+	public String getNombre();
+	
+	/**
+	 * 
 	 * @return el tipo
 	 */
 	public TIPOS_SALONES getTipo();
@@ -19,7 +25,7 @@ public interface VOSalon {
 	 * 
 	 * @return la capacidad
 	 */
-	public Long getCapacidad();
+	public Integer getCapacidad();
 	
 	/**
 	 * 

@@ -7,7 +7,7 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Cuenta {
+public class Cuenta implements VOCuenta {
 
 	private Double total;
 	

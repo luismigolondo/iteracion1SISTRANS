@@ -9,7 +9,7 @@ import java.util.Date;
  * @author luisgomez
  *
  */
-public class Spa {
+public class Spa implements VOSpa{
 
 	private String nombre;
 	

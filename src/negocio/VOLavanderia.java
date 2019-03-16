@@ -11,6 +11,12 @@ public interface VOLavanderia {
 	
 	/**
 	 * 
+	 * @return el nombre del lavado
+	 */
+	public String getNombre();
+	
+	/**
+	 * 
 	 * @return el numero de prendas de lavanderia
 	 */
 	public Integer getNumPrendas();

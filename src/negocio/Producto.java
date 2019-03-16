@@ -7,7 +7,7 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Producto {
+public class Producto implements VOProducto{
 
 	private Integer id;
 	

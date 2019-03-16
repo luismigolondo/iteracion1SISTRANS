@@ -19,7 +19,7 @@ public interface VORestaurante {
 	 * 
 	 * @return la capacidad
 	 */
-	public Long getCapacidad();
+	public Integer getCapacidad();
 	
 	/**
 	 * 

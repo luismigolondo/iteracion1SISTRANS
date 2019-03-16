@@ -7,7 +7,7 @@ package negocio;
  * @author luisgomez
  *
  */
-public class Prestamo {
+public class Prestamo implements VOPrestamo{
 
 	//TODO REVISAR
 	public enum UTENSILIOS {
@@ -16,20 +16,20 @@ public class Prestamo {
 	
 	private UTENSILIOS item;
 	
-	private String condicionDeEntrega;
+	private Double costo;
 	
 	public Prestamo () {
 		this.item = null;
-		this.condicionDeEntrega = "";
+		this.costo = 0.0;
 	}
 
-	/**
+	/**d
 	 * @param item
 	 * @param condicionDeEntrega
 	 */
-	public Prestamo(UTENSILIOS item, String condicionDeEntrega) {
+	public Prestamo(UTENSILIOS item, Double costo) {
 		this.item = item;
-		this.condicionDeEntrega = condicionDeEntrega;
+		this.costo = costo;
 	}
 
 	/**
@@ -49,17 +49,17 @@ public class Prestamo {
 	/**
 	 * @return the condicionDeEntrega
 	 */
-	public String getCondicionDeEntrega() {
-		return condicionDeEntrega;
+	public Double getCosto() {
+		return costo;
 	}
 
 	/**
 	 * @param condicionDeEntrega the condicionDeEntrega to set
 	 */
-	public void setCondicionDeEntrega(String condicionDeEntrega) {
-		this.condicionDeEntrega = condicionDeEntrega;
+	public void setCosto(Double costo) {
+		this.costo = costo;
 	}
-	
-	
-	
+
+
+
 }

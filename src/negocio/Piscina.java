@@ -9,7 +9,7 @@ import java.util.Date;
  * @author luisgomez
  *
  */
-public class Piscina {
+public class Piscina implements VOPiscina{
 
 	private Integer capacidad;
 	
