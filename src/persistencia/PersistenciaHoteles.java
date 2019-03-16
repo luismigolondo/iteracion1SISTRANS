@@ -3,14 +3,14 @@ package persistencia;
 import java.sql.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
 
 import com.google.gson.JsonObject;
 
-import negocio.Reserva;
+import negocio.ReservaHabitacion;
 
 public class PersistenciaHoteles {
 
@@ -41,59 +41,33 @@ public class PersistenciaHoteles {
 	
 	//private SQLUtil sqlUtil;
 	
-	private SQLBares sqlBares;
-	
 	private SQLClientes sqlClientes;
 	
 	private SQLEmpleados sqlEmpleados;
 	
-	private SQLGasto sqlGasto;
-	
-	private SQLGimnasios sqlGimnasios;
+	private SQLGastos sqlGastos;
 	
 	private SQLHabitaciones sqlHabitaciones;
 	
 	private SQLHoteles sqlHoteles;
 	
-	private SQLInternet_Hoteles sqlInternet_Hoteles;
-	
-	private SQLLavanderias sqlLavanderias;
-	
-	private SQLPiscinas sqlPiscinas;
-	
 	private SQLPlanes_De_Consumo sqlPlanes_De_Consumo;
-	
-	private SQLPrestamos sqlPrestamos;
 	
 	private SQLProductos sqlProductos;
 	
-	private SQLReservas sqlReservas;
+	private SQLReservas_Habitaciones sqlReservas_Habitaciones;
+
+	private SQLReservas_Servicios sqlReservas_Servicios;
 	
-	private SQLServicios_Hoteles sqlServicios_Hoteles;
-	
-	private SQLSpas sqlSpas;
-	
-	private SQLSupermercados sqlSupermercados;
-	
-	private SQLTiendas sqlTiendas;
-	
-	private SQLTipo_Estilo sqlTipo_Estilos;
-	
+	private SQLServicios sqlServicios;
+
 	private SQLTipo_Identificacion sqlTipo_Identificacion;
-	
-	private SQLTipo_Lavado sqlTipo_Lavado;
-	
+
 	private SQLTipo_Plan_De_Consumo sqlTipo_Plan_De_Consumo;
+
+	private SQLTipo_Reserva__Habitacion sqlTipo_Reserva_Habitacion;
 	
-	private SQLTipo_Reserva sqlTipo_Reserva;
-	
-	private SQLTipo_Restaurante sqlTipo_Restaurantes;
-	
-	private SQLTipo_Salon sqlTipo_Salon;
-	
-	private SQLTipo_Utensilio sqlTipo_Utensilio;
-	
-	
+	private SQLTipo_Rol sqlTipo_Rol;
 	
 	private PersistenciaHoteles(){
 		pmf = JDOHelper.getPersistenceManagerFactory("Hoteles");
@@ -106,7 +80,7 @@ public class PersistenciaHoteles {
 		tablas = leerNombresTablas(configTabla);
 		
 		String unidadPersistencia = configTabla.get("unidadPersistencia").getAsString();
-		log.trace("Se esta accediendo a la persistencia: " + unidadPersistencia);
+		log.trace ("Se esta accediendo a la persistencia: " + unidadPersistencia);
 		pmf = JDOHelper.getPersistenceManagerFactory(unidadPersistencia);		
 	}
 	
@@ -117,61 +91,37 @@ public class PersistenciaHoteles {
 
 	private void crearClasesSQL ()
 	{
-		sqlBares = new SQLBares(this);
 		sqlClientes = new SQLClientes(this);
 		sqlEmpleados = new SQLEmpleados(this);
-		sqlGasto = new SQLGasto(this);
-		sqlGimnasios = new SQLGimnasios(this);
+		sqlGastos = new SQLGastos(this);
 		sqlHabitaciones = new SQLHabitaciones(this);
 		sqlHoteles = new SQLHoteles(this);
-		sqlInternet_Hoteles = new SQLInternet_Hoteles(this);
-		sqlLavanderias = new SQLLavanderias(this);
-		sqlPiscinas = new SQLPiscinas(this);
 		sqlPlanes_De_Consumo = new SQLPlanes_De_Consumo(this);
-		sqlPrestamos = new SQLPrestamos(this);
 		sqlProductos = new SQLProductos(this);
-		sqlReservas = new SQLReservas(this);
-		sqlServicios_Hoteles = new SQLServicios_Hoteles(this);
-		sqlSpas = new SQLSpas(this);
-		sqlSupermercados = new SQLSupermercados(this);
-		sqlTiendas = new SQLTiendas(this);
-		sqlTipo_Estilos = new SQLTipo_Estilo(this);
+		sqlReservas_Habitaciones = new SQLReservas_Habitaciones(this);
+		sqlReservas_Servicios = new SQLReservas_Servicios(this);
+		sqlServicios = new SQLServicios(this);
 		sqlTipo_Identificacion = new SQLTipo_Identificacion(this);
-		sqlTipo_Lavado = new SQLTipo_Lavado(this);
 		sqlTipo_Plan_De_Consumo = new SQLTipo_Plan_De_Consumo(this);
-		sqlTipo_Reserva = new SQLTipo_Reserva(this);
-		sqlTipo_Restaurantes = new SQLTipo_Restaurante(this);
-		sqlTipo_Salon = new SQLTipo_Salon(this);
-		sqlTipo_Utensilio = new SQLTipo_Utensilio(this);
+		sqlTipo_Reserva_Habitacion = new SQLTipo_Reserva__Habitacion(this);
+		sqlTipo_Rol = new SQLTipo_Rol(this);
 		
 		tablas = new LinkedList<String>();
-		tablas.add("Hoteles_sequence");
+		tablas.add("CadenaHoteles_sequence");
 		tablas.add("BARES");
 		tablas.add("CLIENTES");
 		tablas.add("EMPLEADOS");
 		tablas.add("GASTO");
-		tablas.add("GIMNASIOS");
 		tablas.add("HABITACIONES");
 		tablas.add("HOTELES");
-		tablas.add("INTERNET_HOTELES");
-		tablas.add("LAVANDERIAS");
-		tablas.add("PISCINAS");
 		tablas.add("PLANES_DE_CONSUMO");
-		tablas.add("PRESTAMOS");
 		tablas.add("PRODUCTOS");
-		tablas.add("RESERVAS");
-		tablas.add("SERVICIOS_HOTELES");
-		tablas.add("SPAS");
-		tablas.add("SUPERMERCADOS");
-		tablas.add("TIENDAS");
-		tablas.add("TIPO_ESTILO");
+		tablas.add("RESERVAS_HABITACIONES");
+		tablas.add("SERVICIOS");
 		tablas.add("TIPO_IDENTIFICACION");
-		tablas.add("TIPO_LAVADO");
 		tablas.add("TIPO_PLAN_DE_CONSUMO");
-		tablas.add("TIPO_RESERVA");
-		tablas.add("TIPO_RESTAURANTE");
-		tablas.add("TIPO_SALON");
-		tablas.add("TIPO_UTENSILIO");
+		tablas.add("TIPO_RESERVA_HABITACION");
+		tablas.add("TIPO_ROL");
 	}
 
 	public static PersistenciaHoteles getInstance() {
@@ -193,15 +143,19 @@ public class PersistenciaHoteles {
 	}
 
 
-	public Reserva adicionarReserva(Long pId, Long pIdHotel, Long pIdCliente, int pTipoID, Long pPlanDeConsumo,
+	public ReservaHabitacion adicionarReserva(Long pId, Long pIdHotel, Long pIdCliente, int pTipoID, Long pPlanDeConsumo,
 			int pTipoReserva, Date pFechaInicio, Date pFechaFin) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
-	public Reserva registrarLlegada(Long pIdReserva, Long pIdCliente) {
+	public ReservaHabitacion registrarLlegada(Long pIdReserva, Long pIdCliente) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public ReservaHabitacion checkout(Long pIdReserva, Long pIdCliente){
 		return null;
 	}
 

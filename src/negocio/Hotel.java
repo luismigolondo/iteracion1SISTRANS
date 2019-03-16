@@ -17,10 +17,14 @@ public class Hotel implements VOHotel{
 	
 	public Hotel() {
 		estrellas = 0;
+		nombre = null;
+		id=null;
 	}
 	
-	public Hotel(Integer numeroEstrellas) {
+	public Hotel(Long id,Integer numeroEstrellas, String nombre) {
 		this.estrellas = numeroEstrellas;
+		this.id=id;
+		this.nombre=nombre;
 	}
 
 	/**
