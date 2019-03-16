@@ -32,5 +32,5 @@ public class PersistenciaHoteles {
 	
 	private List<String> tablas;
 	
-	private SQLUtil sqlUtil;
+	//private SQLUtil sqlUtil;
 }
