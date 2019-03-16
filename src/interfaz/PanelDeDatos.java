@@ -11,9 +11,12 @@ import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
 
 /**
- * @author lm.gomezl
- *
+ * Clase de interfaz para mostrar los resultados de la ejecución de las 
+ * operaciones realizadas por el usuario 
+ * @author Germán Bravo
+ * MODIFICADO POR LUIS MIGUEL GOMEZ Y JUAN DAVID DIAZ PARA LA ITERACION 1 DE SISTEMAS TRANSACCIONALES.
  */
+@SuppressWarnings("serial")
 public class PanelDeDatos extends JPanel{
 	
 
