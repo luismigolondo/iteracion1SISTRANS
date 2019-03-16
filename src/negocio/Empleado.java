@@ -1,6 +1,6 @@
 package negocio;
 
-import negocio.Usuario.TIPOS_DE_DOCUMENTO;
+import negocio.Cliente.TIPOS_DE_DOCUMENTO;
 
 public class Empleado implements VOEmpleado{
 
@@ -18,6 +18,8 @@ public class Empleado implements VOEmpleado{
 	
 	private ROLES rol;
 	
+	private String correoElectronico;
+	
 	private Double salario;
 	
 	public Empleado (){
@@ -26,8 +28,8 @@ public class Empleado implements VOEmpleado{
 		this.numeroIdentificacion=null;
 		this.rol=null;
 		this.salario=0.0;
+		this.correoElectronico=null;
 	}
-	
 	
 	/**
 	 * 
@@ -37,17 +39,15 @@ public class Empleado implements VOEmpleado{
 	 * @param rol
 	 * @param salario
 	 */
-	public Empleado(String nombre, TIPOS_DE_DOCUMENTO tipoDeIdentificacion, Long numeroIdentificacion, ROLES rol,
+	public Empleado(String correoElectronico, String nombre, TIPOS_DE_DOCUMENTO tipoDeIdentificacion, Long numeroIdentificacion, ROLES rol,
 			Double salario) {
-		super();
 		this.nombre = nombre;
 		this.tipoDeIdentificacion = tipoDeIdentificacion;
 		this.numeroIdentificacion = numeroIdentificacion;
 		this.rol = rol;
 		this.salario = salario;
+		this.correoElectronico=correoElectronico;
 	}
-
-
 
 	/**
 	 * @return the nombre
@@ -108,6 +108,20 @@ public class Empleado implements VOEmpleado{
 	 */
 	public void setSalario(Double salario) {
 		this.salario = salario;
+	}
+	
+	/**
+	 * @return the correoElectronico
+	 */
+	public String getCorreoElectronico() {
+		return correoElectronico;
+	}
+
+	/**
+	 * @param correoElectronico the correoElectronico to set
+	 */
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
 	}
 	
 }

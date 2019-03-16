@@ -15,6 +15,8 @@ public class PlanesDeConsumo implements VOPlanesDeConsumo{
 		TODO_INCLUIDO
 	}
 	
+	private Long id;
+	
 	private PLANES_DE_CONSUMO tipo;
 	
 	private Double descuento;
@@ -28,6 +30,7 @@ public class PlanesDeConsumo implements VOPlanesDeConsumo{
 		this.descuento = 0.0;
 		this.minNoches = 0;
 		this.costoFijo = 0.0;
+		this.id=null;
 	}
 
 	/**
@@ -36,11 +39,26 @@ public class PlanesDeConsumo implements VOPlanesDeConsumo{
 	 * @param minNoches
 	 * @param costoFijo
 	 */
-	public PlanesDeConsumo(PLANES_DE_CONSUMO tipo, Double descuento, Integer minNoches, Double costoFijo) {
+	public PlanesDeConsumo(Long id,PLANES_DE_CONSUMO tipo, Double descuento, Integer minNoches, Double costoFijo) {
 		this.tipo = tipo;
 		this.descuento = descuento;
 		this.minNoches = minNoches;
 		this.costoFijo = costoFijo;
+		this.id=id;
+	}
+	
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	/**
