@@ -46,4 +46,10 @@ public class SQLReservas_Habitaciones {
 		q.setParameters(1);
 		return (long) q.executeUnique();
 	}
+
+	public long registrarLlegadaCliente(PersistenceManager pm, long pIdReserva) {
+		Query q = pm.newQuery(SQL,"UPDATE "+ ph.darTablaReservasHabitaciones() + " SET CHECKED_IN = ?");
+		q.setParameters(1);
+		return (long) q.executeUnique();
+	}
 }
