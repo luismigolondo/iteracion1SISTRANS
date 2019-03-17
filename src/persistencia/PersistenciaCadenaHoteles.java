@@ -289,8 +289,9 @@ public class PersistenciaCadenaHoteles {
 		try
 		{
 			tx.begin();
-
+			System.out.println("Apenas la voy a hacer");
 			long tupla = sqlReservas_Habitaciones.adicionarReserva(pm, pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
+			System.out.println("Se supone que ya la hice");
 			tx.commit();
 
 			log.trace("Insercion reserva habitacion: " + pId + ": " + tupla + " tuplas insertadas" );
@@ -299,6 +300,7 @@ public class PersistenciaCadenaHoteles {
 		}
 		catch (Exception e)
 		{
+			e.printStackTrace();
 			log.error("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 			return null;
 		}
