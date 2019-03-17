@@ -8,7 +8,7 @@ public class SQLReservas_Servicios {
 	/**
 	 * El manejador de persistencia general de la aplicación
 	 */
-	private PersistenciaHoteles ph;
+	private PersistenciaCadenaHoteles ph;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -17,7 +17,7 @@ public class SQLReservas_Servicios {
 	 * Constructor
 	 * @param ph - El Manejador de persistencia de la aplicación
 	 */
-	public SQLReservas_Servicios(PersistenciaHoteles ph)
+	public SQLReservas_Servicios(PersistenciaCadenaHoteles ph)
 	{
 		this.ph = ph;
 	}

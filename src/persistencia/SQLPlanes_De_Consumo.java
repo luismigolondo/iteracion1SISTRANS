@@ -8,7 +8,7 @@ public class SQLPlanes_De_Consumo {
 	/**
 	 * El manejador de persistencia general de la aplicación
 	 */
-	private PersistenciaHoteles ph;
+	private PersistenciaCadenaHoteles ph;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -17,7 +17,7 @@ public class SQLPlanes_De_Consumo {
 	 * Constructor
 	 * @param ph - El Manejador de persistencia de la aplicación
 	 */
-	public SQLPlanes_De_Consumo(PersistenciaHoteles ph)
+	public SQLPlanes_De_Consumo(PersistenciaCadenaHoteles ph)
 	{
 		this.ph = ph;
 	}
