@@ -289,7 +289,6 @@ public class PersistenciaCadenaHoteles {
 		try
 		{
 			tx.begin();
-
 			long tupla = sqlReservas_Habitaciones.adicionarReserva(pm, pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
 			tx.commit();
 
@@ -299,6 +298,7 @@ public class PersistenciaCadenaHoteles {
 		}
 		catch (Exception e)
 		{
+			e.printStackTrace();
 			log.error("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 			return null;
 		}
