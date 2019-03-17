@@ -97,4 +97,13 @@ public class ReservaServicio implements VOReservaServicio {
 		this.servicio = servicio;
 	}
 	
+	public String toString()
+	{
+		String ts = "Reserva Servicio [id=" + id + 
+				", Inicia el =" + horaInicio + ", hasta =" + horaFin + 
+				"/n , Para el cliente con id = " + cliente[1] + 
+				",para el servicio = " + servicio + "];";
+		return ts;
+	}
+	
 }

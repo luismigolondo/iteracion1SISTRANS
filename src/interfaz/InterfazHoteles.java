@@ -37,6 +37,7 @@ import negocio.CadenaHoteles;
 import negocio.Gasto;
 import negocio.Hotel;
 import negocio.VOReservaHabitacion;
+import negocio.VOReservaServicio;
 
 /**
  * Clase principal de la interfaz
@@ -233,7 +234,43 @@ public class InterfazHoteles extends JFrame implements ActionListener{
         		}
         		String resultado = "En adicionarReservaHabitacion\n\n";
         		resultado += "Reserva adicionada exitosamente: " + tb;
-    			resultado += "\n Operaci�n terminada";
+    			resultado += "\n Operacion terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operaci�n cancelada por recepcion");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    public void RF8registrarReservaServicio( )
+    {
+    	try 
+    	{
+    		long id = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el identificador de la reserva de servicio a crear", "Agregar nueva reserva de Servicio", JOptionPane.QUESTION_MESSAGE));
+    		long idCliente = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese la cedula de ciduadania del cliente", "Agregar nueva reserva de Servicio", JOptionPane.QUESTION_MESSAGE));
+    		long tipoId = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el tipo de identificacion", "Agregar nueva reserva de Servicio", JOptionPane.QUESTION_MESSAGE));
+    		long idServicio = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el tipo de servicio", "Agregar nueva reserva de Servicio", JOptionPane.QUESTION_MESSAGE));
+    		String idFinic = JOptionPane.showInputDialog (this, "Ingrese la fecha de inicio DD/MM/AAAA", "Agregar nueva reserva de Servicio", JOptionPane.QUESTION_MESSAGE);
+    		String idFfin= JOptionPane.showInputDialog (this, "Ingrese la fecha de fin DD/MM/AAAA", "Agregar nueva reserva de Servicion", JOptionPane.QUESTION_MESSAGE);
+    		
+    		if (id != 0)
+    		{
+        		VOReservaServicio tb = hoteles.adicionarReservaServicio(id, idFinic, idFfin, idCliente, tipoId, idServicio);
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear la reserva: " + id);
+        		}
+        		String resultado = "En adicionarReservaServicio\n\n";
+        		resultado += "Reserva adicionada exitosamente: " + tb;
+    			resultado += "\n Operacion terminada";
     			panelDatos.actualizarInterfaz(resultado);
     		}
     		else
@@ -392,30 +429,33 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	 */
 	public void limpiarBD ()
 	{
-//		try 
-//		{
-//    		// Ejecuci�n de la demo y recolecci�n de los resultados
-//			long eliminados [] = hoteles.limpiarHoteles();
-//			
-//			// Generaci�n de la cadena de caracteres con la traza de la ejecuci�n de la demo
-//			String resultado = "\n\n************ Limpiando la base de datos ************ \n";
-//			resultado += eliminados [0] + " Gustan eliminados\n";
-//			resultado += eliminados [1] + " Sirven eliminados\n";
-//			resultado += eliminados [2] + " Visitan eliminados\n";
-//			resultado += eliminados [3] + " Bebidas eliminadas\n";
-//			resultado += eliminados [4] + " Tipos de bebida eliminados\n";
-//			resultado += eliminados [5] + " Bebedores eliminados\n";
-//			resultado += eliminados [6] + " Bares eliminados\n";
-//			resultado += "\nLimpieza terminada";
-//   
-//			panelDatos.actualizarInterfaz(resultado);
-//		} 
-//		catch (Exception e) 
-//		{
-////			e.printStackTrace();
-//			String resultado = generarMensajeError(e);
-//			panelDatos.actualizarInterfaz(resultado);
-//		}
+		try 
+		{
+    		// Ejecuci�n de la demo y recolecci�n de los resultados
+			long eliminados [] = hoteles.limpiarHoteles();
+			
+			// Generaci�n de la cadena de caracteres con la traza de la ejecuci�n de la demo
+			String resultado = "\n\n************ Limpiando la base de datos ************ \n";
+			resultado += eliminados [0] + " Empleados eliminados\n";
+			resultado += eliminados [1] + " Gastos eliminados\n";
+			resultado += eliminados [2] + " Habitaciones eliminados\n";
+			resultado += eliminados [3] + " Gastos eliminadas\n";
+			resultado += eliminados [4] + " Reservas de habitaciones eliminadas\n";
+			resultado += eliminados [5] + " Clientes eliminados\n";
+			resultado += eliminados [6] + " Planes de Consumo eliminados\n";
+			resultado += eliminados [7] + " Servicios eliminados\n";
+			resultado += eliminados [8] + " Hoteles eliminados\n";
+
+			resultado += "\nLimpieza terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+		catch (Exception e) 
+		{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
 	}
 	
 	/**
@@ -447,7 +487,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	 */
 	public void mostrarScriptBD ()
 	{
-		mostrarArchivo ("data/EsquemaParranderos.sql");
+		mostrarArchivo ("data/EsquemaCadenaHoteles.sql");
 	}
 	
 	/**
