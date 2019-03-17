@@ -3,15 +3,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
 
-    <!-- HotelAndes "unit" -->
+    <!-- Parranderos "unit" -->
     <persistence-unit name="CadenaHoteles">
-         <exclude-unlisted-classes/>
+        <exclude-unlisted-classes/>
         <properties>
             <!-- ENABLE THESE FOR Oracle -->
             <property name="javax.jdo.option.ConnectionURL" value="jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:prod"/>
             <property name="javax.jdo.option.ConnectionDriverName" value="oracle.jdbc.driver.OracleDriver"/>
-            <property name="javax.jdo.option.ConnectionUserName" value=""/>
-            <property name="javax.jdo.option.ConnectionPassword" value=""/>
+            <property name="javax.jdo.option.ConnectionUserName" value="ISIS2304C141910"/>
+            <property name="javax.jdo.option.ConnectionPassword" value="uSydFusQFY"/>
             <property name="javax.jdo.option.Mapping" value="oracle"/>
 
             <property name="datanucleus.schema.autoCreateAll" value="false"/>
@@ -20,7 +20,7 @@
     </persistence-unit>
 
     <!-- ParranderosError "unit" Definición de una base de datos que no existe, para verificar el comportamiento en caso de error o caida de la BD-->
-    <persistence-unit name="CadenaHotelesErrorDS">
+    <persistence-unit name="ParranderosErrorDS">
         <exclude-unlisted-classes/>
         <properties>
             <!-- ENABLE THESE FOR Oracle -->
@@ -36,7 +36,7 @@
     </persistence-unit>
 
     <!-- ParranderosErrorUser "unit" Definición de una base de datos que no existe, para verificar el comportamiento en caso de error en las credenciales del usuario -->
-    <persistence-unit name="CadenaHotelesErrorUser">
+    <persistence-unit name="ParranderosErrorUser">
         <exclude-unlisted-classes/>
         <properties>
             <!-- ENABLE THESE FOR Oracle -->

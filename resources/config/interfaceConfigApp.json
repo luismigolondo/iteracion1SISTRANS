@@ -10,7 +10,7 @@
 			[
 				{
 					"label": "REG. RESERVA DE ALOJAMIENTO RF7",
-					"event": "adicionarTipoBebida"
+					"event": "RF7registrarReservaHabitacion"
 				},
 				{
 					"label": "REG.RESERVA SERVICIO CLIENTE RF8",
