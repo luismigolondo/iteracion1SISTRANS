@@ -69,9 +69,9 @@ public class CadenaHoteles {
 	}
 	
 	//RF11
-	public long registrarSalidaCliente(long pIdReserva, long pIdCliente)
+	public long registrarSalidaCliente(long pIdReserva)
 	{
-		log.info("Realizando checkout: " + pIdCliente + " de la reserva: " + pIdReserva);
+		log.info("Realizando checkout de la reserva: " + pIdReserva);
 		long checkout = persistencia.RF11registrarSalidaCliente(pIdReserva);
 		log.info("Se realiz� el checkout de la habitaci�n "+checkout);
 		return checkout;
