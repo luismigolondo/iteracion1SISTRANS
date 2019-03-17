@@ -15,7 +15,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import negocio.Gasto;
 import negocio.ReservaHabitacion;
+import negocio.ReservaServicio;
 
 public class PersistenciaCadenaHoteles {
 
@@ -23,7 +25,7 @@ public class PersistenciaCadenaHoteles {
 	///--------------------------------------
 	///---CONSTANTES
 	///--------------------------------------
-	
+
 	/**
 	 * Logger para escribir la traza de la ejecuci�n
 	 */
@@ -37,33 +39,33 @@ public class PersistenciaCadenaHoteles {
 	///--------------------------------------
 	///---ATRIBUTOS
 	///--------------------------------------
-	
+
 	private static PersistenciaCadenaHoteles instance;
-	
+
 	private PersistenceManagerFactory pmf;
-	
+
 	private List<String> tablas;
-	
+
 	private SQLUtil sqlUtil;
-	
+
 	private SQLClientes sqlClientes;
-	
+
 	private SQLEmpleados sqlEmpleados;
-	
+
 	private SQLGastos sqlGastos;
-	
+
 	private SQLHabitaciones sqlHabitaciones;
-	
+
 	private SQLHoteles sqlHoteles;
-	
+
 	private SQLPlanes_De_Consumo sqlPlanes_De_Consumo;
-	
+
 	private SQLProductos sqlProductos;
-	
+
 	private SQLReservas_Habitaciones sqlReservas_Habitaciones;
 
 	private SQLReservas_Servicios sqlReservas_Servicios;
-	
+
 	private SQLServicios sqlServicios;
 
 	private SQLTipo_Identificacion sqlTipo_Identificacion;
@@ -71,13 +73,13 @@ public class PersistenciaCadenaHoteles {
 	private SQLTipo_Plan_De_Consumo sqlTipo_Plan_De_Consumo;
 
 	private SQLTipo_Reserva__Habitacion sqlTipo_Reserva_Habitacion;
-	
+
 	private SQLTipo_Rol sqlTipo_Rol;
-	
+
 	private PersistenciaCadenaHoteles(){
 		pmf = JDOHelper.getPersistenceManagerFactory("Hoteles");
 		crearClasesSQL();
-		
+
 		tablas = new LinkedList<String>();
 		tablas.add("CadenaHoteles_sequence");
 		tablas.add("CLIENTES");
@@ -95,17 +97,17 @@ public class PersistenciaCadenaHoteles {
 		tablas.add("TIPO_RESERVA_HABITACION");
 		tablas.add("TIPO_ROL");
 	}
-	
+
 	private PersistenciaCadenaHoteles(JsonObject configTabla)
 	{
 		crearClasesSQL();
 		tablas = leerNombresTablas(configTabla);
-		
+
 		String unidadPersistencia = configTabla.get("unidadPersistencia").getAsString();
 		log.trace ("Se esta accediendo a la persistencia: " + unidadPersistencia);
 		pmf = JDOHelper.getPersistenceManagerFactory(unidadPersistencia);		
 	}
-	
+
 
 	private void crearClasesSQL ()
 	{
@@ -123,7 +125,7 @@ public class PersistenciaCadenaHoteles {
 		sqlTipo_Plan_De_Consumo = new SQLTipo_Plan_De_Consumo(this);
 		sqlTipo_Reserva_Habitacion = new SQLTipo_Reserva__Habitacion(this);
 		sqlTipo_Rol = new SQLTipo_Rol(this);
-		
+
 	}
 
 	public static PersistenciaCadenaHoteles getInstance() {
@@ -131,7 +133,7 @@ public class PersistenciaCadenaHoteles {
 			instance = new PersistenciaCadenaHoteles();
 		return instance;
 	}
-	
+
 	public static PersistenciaCadenaHoteles getInstance(JsonObject configuracionTabla) {
 		if(instance == null)
 			instance = new PersistenciaCadenaHoteles(configuracionTabla);
@@ -158,7 +160,7 @@ public class PersistenciaCadenaHoteles {
 		}
 		return resp;
 	}
-	
+
 	/**
 	 * @return La cadena de caracteres con el nombre del secuenciador de parranderos
 	 */
@@ -166,76 +168,76 @@ public class PersistenciaCadenaHoteles {
 	{
 		return tablas.get (0);
 	}
-	
+
 	public String darTablaClientes()
 	{
 		return tablas.get(1);
 	}
-	
+
 	public String darTablaEmpleados()
 	{
 		return tablas.get(2);
 	}
-	
+
 	public String darTablaGastos()
 	{
 		return tablas.get(3);
 	}
-	
+
 	public String darTablaHabitaciones()
 	{
 		return tablas.get(4);
 	}
-	
+
 	public String darTablaHoteles()
 	{
 		return  tablas.get(5);
 	}
-	
+
 	public String darTablaPlanesDeConsumo()
 	{
 		return tablas.get(6);
 	}
-	
+
 	public String darTablaProductos()
 	{
 		return tablas.get(7);
 	}
-	
+
 	public String darTablaReservasHabitaciones()
 	{
 		return tablas.get(8);
 	}
-	
+
 	public String darTablaReservasServicios()
 	{
 		return tablas.get(9);
 	}
-	
+
 	public String darTablaServicios()
 	{
 		return tablas.get(10);
 	}
-	
+
 	public String darTablaTipoIdentificacion(){
 		return tablas.get(11);
 	}
-	
+
 	public String darTablaTipoPlanDeConsumo()
 	{
 		return tablas.get(12);
 	}
-	
+
 	public String darTablaTipoReservaHabitacion()
 	{
 		return tablas.get(13);
 	}
-	
+
 	public String darTablaTipoRol()
 	{
 		return tablas.get(14);
 	}
-	
+
 	/**
 	 * Transacci�n para el generador de secuencia de Parranderos
 	 * Adiciona entradas al log de la aplicaci�n
@@ -243,11 +245,11 @@ public class PersistenciaCadenaHoteles {
 	 */
 	private long nextval ()
 	{
-        long resp = sqlUtil.nextval (pmf.getPersistenceManager());
-        log.trace ("Generando secuencia: " + resp);
-        return resp;
-    }
-	
+		long resp = sqlUtil.nextval (pmf.getPersistenceManager());
+		log.trace ("Generando secuencia: " + resp);
+		return resp;
+	}
+
 	/**
 	 * Extrae el mensaje de la exception JDODataStoreException embebido en la Exception e, que da el detalle espec�fico del problema encontrado
 	 * @param e - La excepci�n que ocurrio
@@ -263,33 +265,74 @@ public class PersistenciaCadenaHoteles {
 		}
 		return resp;
 	}
-// DD/MM/YYYY
-	public ReservaHabitacion adicionarReserva(long pId, long pIdCliente, long pIdTipoId, long pIdHabitacion,
+	
+	/**
+	 * FR7 REGISTRAR UNA RESERVA DE ALOJAMIENTO
+	 *Reserva una habitación por un período de tiempo, por parte de un cliente, siempre y cuando esté disponible.
+	 * Esta operación es realizada por un cliente.
+	 * @param pId id de la reserva
+	 * @param pIdCliente id del cliente de la reserva
+	 * @param pIdTipoId tipo de cedula del cliente
+	 * @param pIdHabitacion la habitacion asignada a la reserva
+	 * @param pIdPlanDeConsumo el tipo de plan de reserva que se asigna
+	 * @param pFechaInicio la fecha en la que inicia la reserva.
+	 * @param pFechaFin la fecha en la que termina una reserva.
+	 * @return
+	 */
+	public ReservaHabitacion RF7adicionarReservaHabitacion(long pId, long pIdCliente, long pIdTipoId, long pIdHabitacion,
 			long pIdPlanDeConsumo, String pFechaInicio, String pFechaFin) {
-	PersistenceManager pm = pmf.getPersistenceManager();
-	Transaction tx = pm.currentTransaction();
-	try
-	{
-		tx.begin();
-		
-		long tupla = sqlReservas_Habitaciones.adicionarReserva(pm, pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
-		tx.commit();
-		
-		log.trace("Insercion reserva: " + pId + ": " + tupla + " tuplas insertadas" );
-		return new ReservaHabitacion(pId, pFechaInicio, pFechaFin, p);
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try
+		{
+			tx.begin();
+
+			long tupla = sqlReservas_Habitaciones.adicionarReserva(pm, pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
+			tx.commit();
+
+			log.trace("Insercion reserva: " + pId + ": " + tupla + " tuplas insertadas" );
+			long [] idCliente = new long [] {pIdCliente, pIdTipoId};
+			return new ReservaHabitacion(pId, idCliente, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
+		}
+		catch (Exception e)
+		{
+			log.error("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if(tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public ReservaServicio RF8adicionarReservaServicio()
+	{
 		return null;
 	}
 
-
-	public ReservaHabitacion registrarLlegada(Long pIdReserva, Long pIdCliente) {
+	public ReservaHabitacion RF9registrarLlegadaCliente(Long pIdReserva, Long pIdCliente) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	public ReservaHabitacion checkout(Long pIdReserva, Long pIdCliente){
+	//servicio, nosotros manejamos lo que ofrecen los servicios como productos.
+	public Gasto RF10registrarConsumoServicio()
+	{
+		return null;
+	}
+	
+	public ReservaHabitacion RF11registrarSalidaCliente()
+	{
 		return null;
 	}
 
-	
+
 }
