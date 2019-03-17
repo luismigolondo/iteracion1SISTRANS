@@ -1,0 +1,22 @@
+{
+	"title": "Nombres de las tablas de Cadena Hoteles Uniandes",
+	"unidadPersistencia": "CadenaHoteles",
+	"tablas":
+	[
+		"CadenaHoteles_sequence",
+		"A_TIPO_IDENTIFICACION",
+		"A_TIPO_PLAN_DE_CONSUMO",
+		"A_TIPO_RESERVA_HABITACION",
+		"A_TIPO_ROL",
+		"A_SERVICIOS",
+		"A_RESERVAS_SERVICIOS",
+		"A_RESERVAS_HABITACIONES",
+		"A_PRODUCTOS",
+		"A_PLANES_DE_CONSUMO",
+		"A_HOTELES",
+		"A_HABITACIONES",
+		"A_GASTOS",
+		"A_EMPLEADOS",
+		"A_CLIENTES"
+	]
+}
