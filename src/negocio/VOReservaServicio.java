@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public interface VOReservaServicio {
 
-	public Long getId();
+	public long getId();
 	
 	public String getHoraInicio();
 	

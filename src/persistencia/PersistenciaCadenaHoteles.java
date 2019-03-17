@@ -326,12 +326,50 @@ public class PersistenciaCadenaHoteles {
 	//servicio, nosotros manejamos lo que ofrecen los servicios como productos.
 	public Gasto RF10registrarConsumoServicio()
 	{
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try{
+        	tx.begin();
+        	long tupla = sqlGastos.registrarConsumoServicio(pm,idHabitacion,idProducto);
+        	return new Gasto(idHabitacion, idProducto);
+        }
+        catch(Exception e)
+        {
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+		
 	}
 	
-	public ReservaHabitacion RF11registrarSalidaCliente()
+	public long RF11registrarSalidaCliente(long idReserva)
 	{
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			long resp = sqlReservas_Habitaciones.registrarSalidaCliente(pm,idReserva);
+			tx.commit();
+			return resp;
+		}
+		catch(Exception e)
+		{
+			log.error("Exception : "+e.getMessage()+ "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally{
+			if(tx.isActive())
+				tx.rollback();
+			pm.close();
+		}
+	
 	}
 
 

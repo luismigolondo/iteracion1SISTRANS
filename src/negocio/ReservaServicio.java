@@ -7,7 +7,7 @@ public class ReservaServicio implements VOReservaServicio {
 	/**
 	 *  id del servicio
 	 */
-	private Long id;
+	private long id;
 	
 	/**
 	 * hora de inicio del servicio
@@ -26,7 +26,7 @@ public class ReservaServicio implements VOReservaServicio {
 	private Habitacion habitacion;
 	
 	public ReservaServicio() {
-		this.id = null;
+		this.id = 0;
 		this.horaInicio = null;
 		this.horaFin = null;
 		this.cliente = null;
@@ -47,7 +47,7 @@ public class ReservaServicio implements VOReservaServicio {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
