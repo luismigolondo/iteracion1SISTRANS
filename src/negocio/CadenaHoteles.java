@@ -67,8 +67,10 @@ public class CadenaHoteles {
 		return checkout;
 	}
 	public long[] limpiarHoteles() {
-		// TODO Auto-generated method stub
-		return null;
+		log.info ("Limpiando la BD de Cadena de Hoteles");
+        long [] borrrados = persistencia.limpiarParranderos();	
+        log.info ("Limpiando la BD de Hoteles: Listo!");
+        return borrrados;
 	}
 
 

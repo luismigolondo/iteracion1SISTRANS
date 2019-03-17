@@ -55,6 +55,10 @@ class SQLUtil {
 	 */
 	public long [] limpiarCadenaHoteles (PersistenceManager pm)
 	{
+		Query qTipoIdentificacion = pm.newQuery(SQL,"DELETE FROM "+pp.darTablaTipoIdentificacion());
+		Query qTipoPlanDeConsumo=pm.newQuery(SQL,"DELETE FROM "+pp.darTablaTipoPlanDeConsumo());
+		Query qTipoReservaHabitacion=pm.newQuery(SQL,"DELETE FROM "+pp.darTablaTipoReservaHabitacion());
+		Query qTipoRol = pm.newQuery(SQL,"DELETE FROM "+pp.darTablaTipoRol());
 		Query qClientes = pm.newQuery(SQL,"DELETE FROM "+pp.darTablaClientes());
 		Query qEmpleados = pm.newQuery(SQL, "DELETE FROM "+pp.darTablaEmpleados());
 		Query qGastos = pm.newQuery(SQL,"DELETE FROM"+pp.darTablaGastos());
@@ -65,11 +69,6 @@ class SQLUtil {
 		Query qReservasHabitaciones = pm.newQuery(SQL,"DELETE FROM "+pp.darTablaReservasHabitaciones());
 		Query qReservasServicios = pm.newQuery(SQL,"DELETE FROM "+pp.darTablaReservasServicios());
 		Query qServicios = pm.newQuery(SQL,"DELETE FROM "+pp.darTablaServicios());
-		Query qTipoIdentificacion = pm.newQuery(SQL,"DELETE FROM "+pp.darTablaTipoIdentificacion());
-		Query qTipoPlanDeConsumo=pm.newQuery(SQL,"DELETE FROM "+pp.darTablaTipoPlanDeConsumo());
-		Query qTipoReservaHabitacion=pm.newQuery(SQL,"DELETE FROM "+pp.darTablaTipoReservaHabitacion());
-		Query qTipoRol = pm.newQuery(SQL,"DELETE FROM "+pp.darTablaTipoRol());
-		
 		long clientesEliminados = (long) qClientes.executeUnique();
 		long empleadosEliminados = (long) qEmpleados.executeUnique();
 		long gastosEliminados = (long) qGastos.executeUnique();

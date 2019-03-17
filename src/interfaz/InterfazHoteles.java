@@ -38,7 +38,7 @@ import negocio.Hotel;
 
 /**
  * Clase principal de la interfaz
- * @author Germán Bravo
+ * @author Germï¿½n Bravo
  * MODIFICADO POR LUIS MIGUEL GOMEZ Y JUAN DAVID DIAZ PARA LA ITERACION 1 DE SISTEMAS TRANSACCIONALES.
  */
 @SuppressWarnings("serial")
@@ -48,17 +48,17 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	// CONSTANTES
 	//---------------------------------------------------
 	/**
-	 * Logger para escribir la traza de la ejecución
+	 * Logger para escribir la traza de la ejecuciï¿½n
 	 */
 	private static Logger log = Logger.getLogger(InterfazHoteles.class.getName());
 	
 	/**
-	 * Ruta al archivo de configuración de la interfaz
+	 * Ruta al archivo de configuraciï¿½n de la interfaz
 	 */
 	private static final String CONFIG_INTERFAZ = "./resources/config/interfaceConfigApp.json"; 
 	
 	/**
-	 * Ruta al archivo de configuración de los nombres de tablas de la base de datos
+	 * Ruta al archivo de configuraciï¿½n de los nombres de tablas de la base de datos
 	 */
 //	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD_A.json"; 
 	
@@ -75,25 +75,25 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	private JMenuBar menuBar;
 	
 	/* ****************************************************************
-	 * 			Métodos
+	 * 			Mï¿½todos
 	 *****************************************************************/
     /**
-     * Construye la ventana principal de la aplicación. <br>
+     * Construye la ventana principal de la aplicaciï¿½n. <br>
      * <b>post:</b> Todos los componentes de la interfaz fueron inicializados.
      */
     public InterfazHoteles( )
     {
-        // Carga la configuración de la interfaz desde un archivo JSON
+        // Carga la configuraciï¿½n de la interfaz desde un archivo JSON
         guiConfig = openConfig ("Interfaz", CONFIG_INTERFAZ);
         
-        // Configura la apariencia del frame que contiene la interfaz gráfica
+        // Configura la apariencia del frame que contiene la interfaz grï¿½fica
         configurarFrame ( );
         if (guiConfig != null) 	   
         {
      	   crearMenu( guiConfig.getAsJsonArray("menuBar") );
         }
         
-        //hoteles = new CadenaHoteles();
+        hoteles = new CadenaHoteles();
         
     	String path = guiConfig.get("bannerPath").getAsString();
         panelDatos = new PanelDeDatos ( );
@@ -104,13 +104,13 @@ public class InterfazHoteles extends JFrame implements ActionListener{
     }
     
 	/* ****************************************************************
-	 * 			Métodos de configuración de la interfaz
+	 * 			Mï¿½todos de configuraciï¿½n de la interfaz
 	 *****************************************************************/
     /**
-     * Lee datos de configuración para la aplicació, a partir de un archivo JSON o con valores por defecto si hay errores.
-     * @param tipo - El tipo de configuración deseada
-     * @param archConfig - Archivo Json que contiene la configuración
-     * @return Un objeto JSON con la configuración del tipo especificado
+     * Lee datos de configuraciï¿½n para la aplicaciï¿½, a partir de un archivo JSON o con valores por defecto si hay errores.
+     * @param tipo - El tipo de configuraciï¿½n deseada
+     * @param archConfig - Archivo Json que contiene la configuraciï¿½n
+     * @return Un objeto JSON con la configuraciï¿½n del tipo especificado
      * 			NULL si hay un error en el archivo.
      */
     private JsonObject openConfig (String tipo, String archConfig)
@@ -122,19 +122,19 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 			FileReader file = new FileReader (archConfig);
 			JsonReader reader = new JsonReader ( file );
 			config = gson.fromJson(reader, JsonObject.class);
-			log.info ("Se encontró un archivo de configuración válido: " + tipo);
+			log.info ("Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: " + tipo);
 		} 
 		catch (Exception e)
 		{
 //			e.printStackTrace ();
-			log.info ("NO se encontró un archivo de configuración válido");			
-			JOptionPane.showMessageDialog(null, "No se encontró un archivo de configuración de interfaz válido: " + tipo, "Cadena de Hoteles", JOptionPane.ERROR_MESSAGE);
+			log.info ("NO se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido");			
+			JOptionPane.showMessageDialog(null, "No se encontrï¿½ un archivo de configuraciï¿½n de interfaz vï¿½lido: " + tipo, "Cadena de Hoteles", JOptionPane.ERROR_MESSAGE);
 		}	
         return config;
     }
     
     /**
-     * Método para configurar el frame principal de la aplicación
+     * Mï¿½todo para configurar el frame principal de la aplicaciï¿½n
      */
     private void configurarFrame(  )
     {
@@ -144,14 +144,14 @@ public class InterfazHoteles extends JFrame implements ActionListener{
     	
     	if ( guiConfig == null )
     	{
-    		log.info ( "Se aplica configuración por defecto" );			
+    		log.info ( "Se aplica configuraciï¿½n por defecto" );			
 			titulo = "Cadena de Hoteles";
 			alto = 300;
 			ancho = 500;
     	}
     	else
     	{
-			log.info ( "Se aplica configuración indicada en el archivo de configuración" );
+			log.info ( "Se aplica configuraciï¿½n indicada en el archivo de configuraciï¿½n" );
     		titulo = guiConfig.get("title").getAsString();
 			alto= guiConfig.get("frameH").getAsInt();
 			ancho = guiConfig.get("frameW").getAsInt();
@@ -167,17 +167,17 @@ public class InterfazHoteles extends JFrame implements ActionListener{
     }
 
     /**
-     * Método para crear el menú de la aplicación con base em el objeto JSON leído
-     * Genera una barra de menú y los menús con sus respectivas opciones
-     * @param jsonMenu - Arreglo Json con los menùs deseados
+     * Mï¿½todo para crear el menï¿½ de la aplicaciï¿½n con base em el objeto JSON leï¿½do
+     * Genera una barra de menï¿½ y los menï¿½s con sus respectivas opciones
+     * @param jsonMenu - Arreglo Json con los menï¿½s deseados
      */
     private void crearMenu(  JsonArray jsonMenu )
     {    	
-    	// Creación de la barra de menús
+    	// Creaciï¿½n de la barra de menï¿½s
         menuBar = new JMenuBar();       
         for (JsonElement men : jsonMenu)
         {
-        	// Creación de cada uno de los menús
+        	// Creaciï¿½n de cada uno de los menï¿½s
         	JsonObject jom = men.getAsJsonObject(); 
 
         	String menuTitle = jom.get("menuTitle").getAsString();        	
@@ -187,7 +187,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
         	
         	for (JsonElement op : opciones)
         	{       	
-        		// Creación de cada una de las opciones del menú
+        		// Creaciï¿½n de cada una de las opciones del menï¿½
         		JsonObject jo = op.getAsJsonObject(); 
         		String lb =   jo.get("label").getAsString();
         		String event = jo.get("event").getAsString();
@@ -203,14 +203,10 @@ public class InterfazHoteles extends JFrame implements ActionListener{
         setJMenuBar ( menuBar );	
     }
     
-	/* ****************************************************************
-	 * 			CRUD de TipoBebida
-	 *****************************************************************/
-    /**
-     * Adiciona un tipo de bebida con la información dada por el usuario
-     * Se crea una nueva tupla de tipoBebida en la base de datos, si un tipo de bebida con ese nombre no existía
-     */
-    public void adicionarTipoBebida( )
+	//------------------------------------
+	 // Metodos de requerimientos
+	//------------------------------------
+    public void RF7registrarReservaHabitacion( )
     {
 //    	try 
 //    	{
@@ -224,12 +220,12 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 //        		}
 //        		String resultado = "En adicionarTipoBebida\n\n";
 //        		resultado += "Tipo de bebida adicionado exitosamente: " + tb;
-//    			resultado += "\n Operación terminada";
+//    			resultado += "\n Operaciï¿½n terminada";
 //    			panelDatos.actualizarInterfaz(resultado);
 //    		}
 //    		else
 //    		{
-//    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+//    			panelDatos.actualizarInterfaz("Operaciï¿½n cancelada por el usuario");
 //    		}
 //		} 
 //    	catch (Exception e) 
@@ -241,7 +237,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
     }
 
     /**
-     * Consulta en la base de datos los tipos de bebida existentes y los muestra en el panel de datos de la aplicación
+     * Consulta en la base de datos los tipos de bebida existentes y los muestra en el panel de datos de la aplicaciï¿½n
      */
     public void listarTipoBebida( )
     {
@@ -252,7 +248,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 //			String resultado = "En listarTipoBebida";
 //			resultado +=  "\n" + listarTiposBebida (lista);
 //			panelDatos.actualizarInterfaz(resultado);
-//			resultado += "\n Operación terminada";
+//			resultado += "\n Operaciï¿½n terminada";
 //		} 
 //    	catch (Exception e) 
 //    	{
@@ -278,12 +274,12 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 //
 //    			String resultado = "En eliminar TipoBebida\n\n";
 //    			resultado += tbEliminados + " Tipos de bebida eliminados\n";
-//    			resultado += "\n Operación terminada";
+//    			resultado += "\n Operaciï¿½n terminada";
 //    			panelDatos.actualizarInterfaz(resultado);
 //    		}
 //    		else
 //    		{
-//    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+//    			panelDatos.actualizarInterfaz("Operaciï¿½n cancelada por el usuario");
 //    		}
 //		} 
 //    	catch (Exception e) 
@@ -314,12 +310,12 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 //    			{
 //        			resultado += "Un tipo de bebida con nombre: " + nombreTb + " NO EXISTE\n";    				
 //    			}
-//    			resultado += "\n Operación terminada";
+//    			resultado += "\n Operaciï¿½n terminada";
 //    			panelDatos.actualizarInterfaz(resultado);
 //    		}
 //    		else
 //    		{
-//    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+//    			panelDatos.actualizarInterfaz("Operaciï¿½n cancelada por el usuario");
 //    		}
 //		} 
 //    	catch (Exception e) 
@@ -332,7 +328,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 
 
 	/* ****************************************************************
-	 * 			Métodos administrativos
+	 * 			Mï¿½todos administrativos
 	 *****************************************************************/
 	/**
 	 * Muestra el log de Hoteles
@@ -352,14 +348,14 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	
 	/**
 	 * Limpia el contenido del log de Hoteles
-	 * Muestra en el panel de datos la traza de la ejecución
+	 * Muestra en el panel de datos la traza de la ejecuciï¿½n
 	 */
 	public void limpiarLogHoteles ()
 	{
-		// Ejecución de la operación y recolección de los resultados
+		// Ejecuciï¿½n de la operaciï¿½n y recolecciï¿½n de los resultados
 		boolean resp = limpiarArchivo ("hoteles.log");
 
-		// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+		// Generaciï¿½n de la cadena de caracteres con la traza de la ejecuciï¿½n de la demo
 		String resultado = "\n\n************ Limpiando el log de hoteles ************ \n";
 		resultado += "Archivo " + (resp ? "limpiado exitosamente" : "NO PUDO ser limpiado !!");
 		resultado += "\nLimpieza terminada";
@@ -369,14 +365,14 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	
 	/**
 	 * Limpia el contenido del log de datanucleus
-	 * Muestra en el panel de datos la traza de la ejecución
+	 * Muestra en el panel de datos la traza de la ejecuciï¿½n
 	 */
 	public void limpiarLogDatanucleus ()
 	{
-		// Ejecución de la operación y recolección de los resultados
+		// Ejecuciï¿½n de la operaciï¿½n y recolecciï¿½n de los resultados
 		boolean resp = limpiarArchivo ("datanucleus.log");
 
-		// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+		// Generaciï¿½n de la cadena de caracteres con la traza de la ejecuciï¿½n de la demo
 		String resultado = "\n\n************ Limpiando el log de datanucleus ************ \n";
 		resultado += "Archivo " + (resp ? "limpiado exitosamente" : "NO PUDO ser limpiado !!");
 		resultado += "\nLimpieza terminada";
@@ -386,16 +382,16 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	
 	/**
 	 * Limpia todas las tuplas de todas las tablas de la base de datos de hoteles
-	 * Muestra en el panel de datos el número de tuplas eliminadas de cada tabla
+	 * Muestra en el panel de datos el nï¿½mero de tuplas eliminadas de cada tabla
 	 */
 	public void limpiarBD ()
 	{
 //		try 
 //		{
-//    		// Ejecución de la demo y recolección de los resultados
+//    		// Ejecuciï¿½n de la demo y recolecciï¿½n de los resultados
 //			long eliminados [] = hoteles.limpiarHoteles();
 //			
-//			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+//			// Generaciï¿½n de la cadena de caracteres con la traza de la ejecuciï¿½n de la demo
 //			String resultado = "\n\n************ Limpiando la base de datos ************ \n";
 //			resultado += eliminados [0] + " Gustan eliminados\n";
 //			resultado += eliminados [1] + " Sirven eliminados\n";
@@ -417,7 +413,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	}
 	
 	/**
-	 * Muestra la presentación general del proyecto
+	 * Muestra la presentaciï¿½n general del proyecto
 	 */
 	public void mostrarPresentacionGeneral ()
 	{
@@ -441,7 +437,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	}
 	
 	/**
-	 * Muestra el script de creación de la base de datos
+	 * Muestra el script de creaciï¿½n de la base de datos
 	 */
 	public void mostrarScriptBD ()
 	{
@@ -457,7 +453,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	}
 	
 	/**
-	 * Muestra la documentación Javadoc del proyectp
+	 * Muestra la documentaciï¿½n Javadoc del proyectp
 	 */
 	public void mostrarJavadoc ()
 	{
@@ -465,15 +461,15 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	}
 	
 	/**
-     * Muestra la información acerca del desarrollo de esta apicación
+     * Muestra la informaciï¿½n acerca del desarrollo de esta apicaciï¿½n
      */
     public void acercaDe ()
     {
 		String resultado = "\n\n ************************************\n\n";
-		resultado += " * Universidad	de	los	Andes	(Bogotá	- Colombia)\n";		
+		resultado += " * Universidad	de	los	Andes	(Bogotï¿½	- Colombia)\n";		
 		resultado += " * Curso: ISIS2304 - Sistemas Transaccionales\n";
 		resultado += " * Proyecto: HotelUniandes\n";
-		resultado += " * Hecho por Luis Miguel Gomez Londoño y Juan David Diaz Cristancho\n";
+		resultado += " * Hecho por Luis Miguel Gomez Londoï¿½o y Juan David Diaz Cristancho\n";
 		resultado += " * Inspirado y referenciado principalmente por el proyecto PARRANDEROS elaborado\n";
 		resultado += " * por el profesor GERMAN BRAVO\n";
 		resultado += "\n ************************************\n\n";
@@ -483,12 +479,12 @@ public class InterfazHoteles extends JFrame implements ActionListener{
     
 
 	/* ****************************************************************
-	 * 			Métodos privados para la presentación de resultados y otras operaciones
+	 * 			Mï¿½todos privados para la presentaciï¿½n de resultados y otras operaciones
 	 *****************************************************************/
     /**
-     * Genera una cadena de caracteres con la lista de los tipos de bebida recibida: una línea por cada tipo de bebida
+     * Genera una cadena de caracteres con la lista de los tipos de bebida recibida: una lï¿½nea por cada tipo de bebida
      * @param lista - La lista con los tipos de bebida
-     * @return La cadena con una líea para cada tipo de bebida recibido
+     * @return La cadena con una lï¿½ea para cada tipo de bebida recibido
      */
     private String listarTiposBebida(List<String> lista) 
     {
@@ -503,9 +499,9 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	}
 
     /**
-     * Genera una cadena de caracteres con la descripción de la excepcion e, haciendo énfasis en las excepcionsde JDO
-     * @param e - La excepción recibida
-     * @return La descripción de la excepción, cuando es javax.jdo.JDODataStoreException, "" de lo contrario
+     * Genera una cadena de caracteres con la descripciï¿½n de la excepcion e, haciendo ï¿½nfasis en las excepcionsde JDO
+     * @param e - La excepciï¿½n recibida
+     * @return La descripciï¿½n de la excepciï¿½n, cuando es javax.jdo.JDODataStoreException, "" de lo contrario
      */
 	private String darDetalleException(Exception e) 
 	{
@@ -519,15 +515,15 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	}
 
 	/**
-	 * Genera una cadena para indicar al usuario que hubo un error en la aplicación
-	 * @param e - La excepción generada
-	 * @return La cadena con la información de la excepción y detalles adicionales
+	 * Genera una cadena para indicar al usuario que hubo un error en la aplicaciï¿½n
+	 * @param e - La excepciï¿½n generada
+	 * @return La cadena con la informaciï¿½n de la excepciï¿½n y detalles adicionales
 	 */
 	private String generarMensajeError(Exception e) 
 	{
-		String resultado = "************ Error en la ejecución\n";
+		String resultado = "************ Error en la ejecuciï¿½n\n";
 		resultado += e.getLocalizedMessage() + ", " + darDetalleException(e);
-		resultado += "\n\nRevise datanucleus.log y hoteles.log para más detalles";
+		resultado += "\n\nRevise datanucleus.log y hoteles.log para mï¿½s detalles";
 		return resultado;
 	}
 
@@ -554,7 +550,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	}
 
 	/**
-	 * Abre el archivo dado como parámetro con la aplicación por defecto del sistema
+	 * Abre el archivo dado como parï¿½metro con la aplicaciï¿½n por defecto del sistema
 	 * @param nombreArchivo - El nombre del archivo que se quiere mostrar
 	 */
 	private void mostrarArchivo (String nombreArchivo)
@@ -571,11 +567,11 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	}
 
 	/* ****************************************************************
-	 * 			Métodos de la Interacción
+	 * 			Mï¿½todos de la Interacciï¿½n
 	 *****************************************************************/
     /**
-     * Método para la ejecución de los eventos que enlazan el menú con los métodos de negocio
-     * Invoca al método correspondiente según el evento recibido
+     * Mï¿½todo para la ejecuciï¿½n de los eventos que enlazan el menï¿½ con los mï¿½todos de negocio
+     * Invoca al mï¿½todo correspondiente segï¿½n el evento recibido
      * @param pEvento - El evento del usuario
      */
     @Override
@@ -597,8 +593,8 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	 * 			Programa principal
 	 *****************************************************************/
     /**
-     * Este método ejecuta la aplicación, creando una nueva interfaz
-     * @param args Arreglo de argumentos que se recibe por línea de comandos
+     * Este mï¿½todo ejecuta la aplicaciï¿½n, creando una nueva interfaz
+     * @param args Arreglo de argumentos que se recibe por lï¿½nea de comandos
      */
     public static void main( String[] args )
     {
