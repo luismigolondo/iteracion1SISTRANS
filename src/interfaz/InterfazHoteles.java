@@ -34,6 +34,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import negocio.CadenaHoteles;
+import negocio.Gasto;
 import negocio.Hotel;
 import negocio.VOReservaHabitacion;
 import negocio.VOReservaServicio;
@@ -284,96 +285,89 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
-
-    /**
-     * Consulta en la base de datos los tipos de bebida existentes y los muestra en el panel de datos de la aplicaci�n
-     */
-    public void listarTipoBebida( )
+    
+    public void RF9registrarLlegadaCliente(long pIdReserva)
     {
-//    	try 
-//    	{
-//			List <VOTipoBebida> lista = parranderos.darVOTiposBebida();
-//
-//			String resultado = "En listarTipoBebida";
-//			resultado +=  "\n" + listarTiposBebida (lista);
-//			panelDatos.actualizarInterfaz(resultado);
-//			resultado += "\n Operaci�n terminada";
-//		} 
-//    	catch (Exception e) 
-//    	{
-////			e.printStackTrace();
-//			String resultado = generarMensajeError(e);
-//			panelDatos.actualizarInterfaz(resultado);
-//		}
+    	try
+    	{
+    		long id = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el identificador de la reserva a modificar", "Realizar checkin", JOptionPane.QUESTION_MESSAGE));
+        	if(id!=0)
+        	{
+        		long tb = hoteles.registrarLlegadaCliente(pIdReserva);
+        		if(tb==0)
+        		{
+        			throw new Exception("No se puede realizar el checkin a la reserva: "+id);
+        		}
+        		String resultado = "En adicionarReservaHabitacion\n\n";
+        		resultado += "Checkin realizado exitosamente: " + tb;
+    			resultado += "\n Operaci�n terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+        	}
+    	}
+    	catch(Exception e)
+    	{
+    		String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+    	}
+    }
+    
+    public void RF10registrarConsumoServicio()
+    {
+    	try {    		
+    		long idHabitacion = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el id de la habitacion", "Ingresar id", JOptionPane.QUESTION_MESSAGE));
+    		long idProducto = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el id del producto", "Ingresar id", JOptionPane.QUESTION_MESSAGE));
+    		
+    		if(idHabitacion!=0 && idProducto!=0)
+    		{
+    			Gasto tb = hoteles.registrarConsumoServicio(idHabitacion, idProducto);
+    			if(tb==null)
+    			{
+    				throw new Exception ("No se puedo registrar el gasto a la habitacion "+idHabitacion+" del producto "+idProducto);
+    			}
+    			String resultado = "En registrarConsumoServicio\n\n";
+        		resultado += "Gasto adicionado exitosamente: " + tb;
+    			resultado += "\n Operaci�n terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    	}
+    	catch(Exception e)
+    	{
+    		String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+    	}
+		
+    }
+    
+    public void RF11registrarSalidaCliente()
+    {
+    	try {
+    		long id = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el identificador de la reserva a modificar", "Realizar checkout", JOptionPane.QUESTION_MESSAGE));
+        	if(id!=0)
+        	{
+        		long tb = hoteles.registrarSalidaCliente(id);
+        		if(tb!=0)
+        		{
+        			throw new Exception("No se puede realizar el checkout a la reserva: "+id);
+        		}
+        		String resultado = "En adicionarReservaHabitacion\n\n";
+        		resultado += "Checkout realizado exitosamente: " + tb;
+    			resultado += "\n Operaci�n terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+        	}
+        	else
+        	{
+        		panelDatos.actualizarInterfaz("Operaci�n cancelada por recepcion");
+        	}
+    		
+    	}catch(Exception e){
+    		e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+    	}
     }
 
-    /**
-     * Borra de la base de datos el tipo de bebida con el identificador dado po el usuario
-     * Cuando dicho tipo de bebida no existe, se indica que se borraron 0 registros de la base de datos
-     */
-    public void eliminarTipoBebidaPorId( )
-    {
-//    	try 
-//    	{
-//    		String idTipoStr = JOptionPane.showInputDialog (this, "Id del tipo de bedida?", "Borrar tipo de bebida por Id", JOptionPane.QUESTION_MESSAGE);
-//    		if (idTipoStr != null)
-//    		{
-//    			long idTipo = Long.valueOf (idTipoStr);
-//    			long tbEliminados = parranderos.eliminarTipoBebidaPorId (idTipo);
-//
-//    			String resultado = "En eliminar TipoBebida\n\n";
-//    			resultado += tbEliminados + " Tipos de bebida eliminados\n";
-//    			resultado += "\n Operaci�n terminada";
-//    			panelDatos.actualizarInterfaz(resultado);
-//    		}
-//    		else
-//    		{
-//    			panelDatos.actualizarInterfaz("Operaci�n cancelada por el usuario");
-//    		}
-//		} 
-//    	catch (Exception e) 
-//    	{
-////			e.printStackTrace();
-//			String resultado = generarMensajeError(e);
-//			panelDatos.actualizarInterfaz(resultado);
-//		}
-    }
-
-    /**
-     * Busca el tipo de bebida con el nombre indicado por el usuario y lo muestra en el panel de datos
-     */
-    public void buscarTipoBebidaPorNombre( )
-    {
-//    	try 
-//    	{
-//    		String nombreTb = JOptionPane.showInputDialog (this, "Nombre del tipo de bedida?", "Buscar tipo de bebida por nombre", JOptionPane.QUESTION_MESSAGE);
-//    		if (nombreTb != null)
-//    		{
-//    			VOTipoBebida tipoBebida = parranderos.darTipoBebidaPorNombre (nombreTb);
-//    			String resultado = "En buscar Tipo Bebida por nombre\n\n";
-//    			if (tipoBebida != null)
-//    			{
-//        			resultado += "El tipo de bebida es: " + tipoBebida;
-//    			}
-//    			else
-//    			{
-//        			resultado += "Un tipo de bebida con nombre: " + nombreTb + " NO EXISTE\n";    				
-//    			}
-//    			resultado += "\n Operaci�n terminada";
-//    			panelDatos.actualizarInterfaz(resultado);
-//    		}
-//    		else
-//    		{
-//    			panelDatos.actualizarInterfaz("Operaci�n cancelada por el usuario");
-//    		}
-//		} 
-//    	catch (Exception e) 
-//    	{
-////			e.printStackTrace();
-//			String resultado = generarMensajeError(e);
-//			panelDatos.actualizarInterfaz(resultado);
-//		}
-    }
+  
+ 
 
 
 	/* ****************************************************************
@@ -533,22 +527,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	/* ****************************************************************
 	 * 			M�todos privados para la presentaci�n de resultados y otras operaciones
 	 *****************************************************************/
-    /**
-     * Genera una cadena de caracteres con la lista de los tipos de bebida recibida: una l�nea por cada tipo de bebida
-     * @param lista - La lista con los tipos de bebida
-     * @return La cadena con una l�ea para cada tipo de bebida recibido
-     */
-    private String listarTiposBebida(List<String> lista) 
-    {
-//    	String resp = "Los tipos de bebida existentes son:\n";
-//    	int i = 1;
-//        for (VOTipoBebida tb : lista)
-//        {
-//        	resp += i++ + ". " + tb.toString() + "\n";
-//        }
-//        return resp;
-    	return null;
-	}
+    
 
     /**
      * Genera una cadena de caracteres con la descripci�n de la excepcion e, haciendo �nfasis en las excepcionsde JDO
