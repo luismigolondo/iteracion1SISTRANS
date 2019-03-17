@@ -7,7 +7,9 @@ import org.apache.log4j.Logger;
 
 import javax.jdo.JDODataStoreException;
 import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Transaction;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -23,7 +25,7 @@ public class PersistenciaCadenaHoteles {
 	///--------------------------------------
 	
 	/**
-	 * Logger para escribir la traza de la ejecución
+	 * Logger para escribir la traza de la ejecuciï¿½n
 	 */
 	private static Logger log = Logger.getLogger(PersistenciaCadenaHoteles.class.getName());
 
@@ -235,9 +237,9 @@ public class PersistenciaCadenaHoteles {
 	}
 	
 	/**
-	 * Transacción para el generador de secuencia de Parranderos
-	 * Adiciona entradas al log de la aplicación
-	 * @return El siguiente número del secuenciador de Parranderos
+	 * Transacciï¿½n para el generador de secuencia de Parranderos
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return El siguiente nï¿½mero del secuenciador de Parranderos
 	 */
 	private long nextval ()
 	{
@@ -247,9 +249,9 @@ public class PersistenciaCadenaHoteles {
     }
 	
 	/**
-	 * Extrae el mensaje de la exception JDODataStoreException embebido en la Exception e, que da el detalle específico del problema encontrado
-	 * @param e - La excepción que ocurrio
-	 * @return El mensaje de la excepción JDO
+	 * Extrae el mensaje de la exception JDODataStoreException embebido en la Exception e, que da el detalle especï¿½fico del problema encontrado
+	 * @param e - La excepciï¿½n que ocurrio
+	 * @return El mensaje de la excepciï¿½n JDO
 	 */
 	private String darDetalleException(Exception e) 
 	{
@@ -261,10 +263,15 @@ public class PersistenciaCadenaHoteles {
 		}
 		return resp;
 	}
-	
-	public ReservaHabitacion adicionarReserva(Long pId, Long pIdHotel, Long pIdCliente, int pTipoID, Long pPlanDeConsumo,
-			int pTipoReserva, Date pFechaInicio, Date pFechaFin) {
-		// TODO Auto-generated method stub
+// DD/MM/YYYY
+	public ReservaHabitacion adicionarReserva(long pId, long pIdCliente, long pIdTipoId, long pIdHabitacion,
+			long pIdPlanDeConsumo, String pFechaInicio, String pFechaFin) {
+	PersistenceManager pm = pmf.getPersistenceManager();
+	Transaction tx = pm.currentTransaction();
+//	try
+//	{
+//		
+//	}
 		return null;
 	}
 
