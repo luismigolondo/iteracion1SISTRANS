@@ -176,4 +176,15 @@ public class ReservaHabitacion implements VOReservaHabitacion{
 		this.cliente = cliente;
 	}
 	
+	public String toString()
+	{
+		String ts = "Reserva Habitacion [id=" + id + 
+				", Inicia el =" + fechaInicio + ", estadia hasta =" + fechaFin + 
+				"/n , el estado de check in es = " + checkedIn + ", estado check out = " + checkedOut + 
+				", Para el cliente con id = " + cliente[1] + 
+				", con el plan de consumos = " + idPlanDeConsumo + 
+				", asignado a la habitacion = " + idHabitacion + "];";
+		return ts;
+	}
+	
 }
