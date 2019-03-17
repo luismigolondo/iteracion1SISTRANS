@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 /**
  * Interfaz para los metodos get de Habitacion
  * @author jd.diazc
@@ -8,20 +10,37 @@ package negocio;
 public interface VOHabitacion {
 
 	/**
-	 * 
-	 * @return el numero de la habitacion
+	 * @return the id
 	 */
-	public Integer getNumeroHabitacion();
-	
+	public long getId();
+
 	/**
-	 * 
-	 * @return la capacidad de la habitacion
+	 * @return the capacidad
 	 */
-	public Integer getCapacidad();
-	
+	public int getCapacidad() ;
+
 	/**
-	 * 
-	 * @return la dotacion de la habitacion
+	 * @return the dotacion
 	 */
 	public String getDotacion();
+
+	/**
+	 * @return the tipo
+	 */
+	public long getTipo() ;
+
+	/**
+	 * @return the idHotel
+	 */
+	public long getIdHotel() ;
+
+	/**
+	 * @return the reservasHabitaciones
+	 */
+	public List<Long> getReservasHabitaciones();
+
+	/**
+	 * @return the gastos
+	 */
+	public List<Long> getGastos();
 }

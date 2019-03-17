@@ -8,26 +8,23 @@ package negocio;
 public interface VOProducto {
 
 	/**
-	 * 
-	 * @return el id
+	 * @return the id
 	 */
-	public Integer getId();
-	
+	public long getId();
+
 	/**
-	 * 
-	 * @return el nombre
+	 * @return the nombre
 	 */
 	public String getNombre();
-	
+
 	/**
-	 * 
-	 * @return el valor
+	 * @return the valor
 	 */
 	public Double getValor();
-	
+
 	/**
-	 * 
-	 * @return el id de servicio al que pertenece el producto
+	 * @return the idServicio
 	 */
-	public Integer getIdServicio();
+	public long getIdServicio();
+
 }

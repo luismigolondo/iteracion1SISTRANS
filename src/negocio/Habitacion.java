@@ -3,6 +3,9 @@
  */
 package negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author luisgomez
  *
@@ -15,59 +18,75 @@ public class Habitacion implements VOHabitacion{
 		SENCILLA
 	}
 	
-	private Integer numeroHabitacion;
+	private long id;
 	
-	private Integer capacidad;
+	private int capacidad;
 	
 	private String dotacion;
 	
-	private TIPOS_DE_HABITACION tipo;
+	private long tipo;
+	
+	private long idHotel;
+	
+	private List<Long> reservasHabitaciones;
+	
+	private List<Long> gastos;
 	
 	public Habitacion () {
-		this.numeroHabitacion = 0;
+		this.id = 0;
 		this.capacidad = 0;
 		this.dotacion = "";
-		this.tipo = null;
+		this.tipo = 0;
+		this.idHotel = 0;
+		this.reservasHabitaciones = new ArrayList<>();
+		this.gastos = new ArrayList<>();
 	}
 
 	/**
-	 * @param numeroHabitacion
+	 * @param id
 	 * @param capacidad
 	 * @param dotacion
 	 * @param tipo
+	 * @param idHotel
+	 * @param reservasHabitaciones
+	 * @param gastos
 	 */
-	public Habitacion(Integer numeroHabitacion, Integer capacidad, String dotacion, TIPOS_DE_HABITACION tipo) {
-		this.numeroHabitacion = numeroHabitacion;
+	public Habitacion(long id, int capacidad, String dotacion, long tipo, long idHotel, List<Long> reservasHabitaciones,
+			List<Long> gastos) {
+		this.id = id;
 		this.capacidad = capacidad;
 		this.dotacion = dotacion;
 		this.tipo = tipo;
+		this.idHotel = idHotel;
+		this.reservasHabitaciones = reservasHabitaciones;
+		this.gastos = gastos;
 	}
 
 	/**
-	 * @return the numeroHabitacion
+	 * @return the id
 	 */
-	public Integer getNumeroHabitacion() {
-		return numeroHabitacion;
+	public long getId() {
+		return id;
 	}
 
 	/**
-	 * @param numeroHabitacion the numeroHabitacion to set
+	 * @param id the id to set
 	 */
-	public void setNumeroHabitacion(Integer numeroHabitacion) {
-		this.numeroHabitacion = numeroHabitacion;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	/**
 	 * @return the capacidad
 	 */
-	public Integer getCapacidad() {
+	public int getCapacidad() {
 		return capacidad;
 	}
 
 	/**
 	 * @param capacidad the capacidad to set
 	 */
-	public void setCapacidad(Integer capacidad) {
+	public void setCapacidad(int capacidad) {
 		this.capacidad = capacidad;
 	}
 
@@ -88,17 +107,58 @@ public class Habitacion implements VOHabitacion{
 	/**
 	 * @return the tipo
 	 */
-	public TIPOS_DE_HABITACION getTipo() {
+	public long getTipo() {
 		return tipo;
 	}
 
 	/**
 	 * @param tipo the tipo to set
 	 */
-	public void setTipo(TIPOS_DE_HABITACION tipo) {
+	public void setTipo(long tipo) {
 		this.tipo = tipo;
 	}
-	
-	
+
+	/**
+	 * @return the idHotel
+	 */
+	public long getIdHotel() {
+		return idHotel;
+	}
+
+	/**
+	 * @param idHotel the idHotel to set
+	 */
+	public void setIdHotel(long idHotel) {
+		this.idHotel = idHotel;
+	}
+
+	/**
+	 * @return the reservasHabitaciones
+	 */
+	public List<Long> getReservasHabitaciones() {
+		return reservasHabitaciones;
+	}
+
+	/**
+	 * @param reservasHabitaciones the reservasHabitaciones to set
+	 */
+	public void setReservasHabitaciones(List<Long> reservasHabitaciones) {
+		this.reservasHabitaciones = reservasHabitaciones;
+	}
+
+	/**
+	 * @return the gastos
+	 */
+	public List<Long> getGastos() {
+		return gastos;
+	}
+
+	/**
+	 * @param gastos the gastos to set
+	 */
+	public void setGastos(List<Long> gastos) {
+		this.gastos = gastos;
+	}
+
 	
 }
