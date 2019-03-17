@@ -12,12 +12,37 @@ public class ReservaServicio implements VOReservaServicio {
 	/**
 	 * hora de inicio del servicio
 	 */
-	private Date horaInicio;
+	private String horaInicio;
 	
 	/**
 	 * hora de finalizacion del servicio
 	 */
-	private Date horaFin;
+	private String horaFin;
+
+	private Cliente cliente;
+	
+	private PlanesDeConsumo planDeConsumo;
+	
+	private Habitacion habitacion;
+	
+	public ReservaServicio() {
+		this.id = null;
+		this.horaInicio = null;
+		this.horaFin = null;
+		this.cliente = null;
+		this.planDeConsumo = null;
+		this.habitacion = null;
+	}
+	
+	public ReservaServicio(Long id, String horaInicio, String horaFin, Cliente cliente, PlanesDeConsumo planDeConsumo,
+			Habitacion habitacion) {
+		this.id = id;
+		this.horaInicio = horaInicio;
+		this.horaFin = horaFin;
+		this.cliente = cliente;
+		this.planDeConsumo = planDeConsumo;
+		this.habitacion = habitacion;
+	}
 
 	/**
 	 * @return the id
@@ -36,29 +61,53 @@ public class ReservaServicio implements VOReservaServicio {
 	/**
 	 * @return the horaInicio
 	 */
-	public Date getHoraInicio() {
+	public String getHoraInicio() {
 		return horaInicio;
 	}
 
 	/**
 	 * @param horaInicio the horaInicio to set
 	 */
-	public void setHoraInicio(Date horaInicio) {
+	public void setHoraInicio(String horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
 	/**
 	 * @return the horaFin
 	 */
-	public Date getHoraFin() {
+	public String getHoraFin() {
 		return horaFin;
 	}
 
 	/**
 	 * @param horaFin the horaFin to set
 	 */
-	public void setHoraFin(Date horaFin) {
+	public void setHoraFin(String horaFin) {
 		this.horaFin = horaFin;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public PlanesDeConsumo getPlanDeConsumo() {
+		return planDeConsumo;
+	}
+
+	public void setPlanDeConsumo(PlanesDeConsumo planDeConsumo) {
+		this.planDeConsumo = planDeConsumo;
+	}
+
+	public Habitacion getHabitacion() {
+		return habitacion;
+	}
+
+	public void setHabitacion(Habitacion habitacion) {
+		this.habitacion = habitacion;
 	}
 	
 	

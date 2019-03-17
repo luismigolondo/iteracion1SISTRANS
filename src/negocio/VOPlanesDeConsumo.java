@@ -1,6 +1,5 @@
 package negocio;
 
-import negocio.PlanesDeConsumo.PLANES_DE_CONSUMO;
 
 /**
  * Interfaz para los metodos get de Planes de Consumio
@@ -13,7 +12,7 @@ public interface VOPlanesDeConsumo {
 	 * 
 	 * @return el tipo
 	 */
-	public PLANES_DE_CONSUMO getTipo();
+	public long getTipo();
 	
 	/**
 	 * 
@@ -32,5 +31,9 @@ public interface VOPlanesDeConsumo {
 	 * @return el costo fijo
 	 */
 	public Double getCostoFijo();
+	
+	public Hotel getHotel();
+	
+	public long getId();
 	
 }

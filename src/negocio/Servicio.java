@@ -4,6 +4,7 @@
 package negocio;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  * @author luisgomez
@@ -23,6 +24,10 @@ public class Servicio implements VOServicio{
 	
 	private String descripcion;
 	
+	private Hotel hotel;
+	
+	private List<Long> productos;
+	
 	public Servicio() {
 		this.id = null;
 		this.nombre = null;
@@ -30,17 +35,37 @@ public class Servicio implements VOServicio{
 		this.horaCierre = null;
 		this.tipo = null;
 		this.descripcion = null;
+		hotel=null;
+		productos=null;
 	}
 	
-	public Servicio(Long id, String nombre, String horaApertura, String horaCierre, String tipo, String descripcion) {
+	public Servicio(Long id, String nombre, String horaApertura, String horaCierre, String tipo, String descripcion, Hotel hotel, List productos) {
 		this.id = id;
 		this.nombre = nombre;
 		this.horaApertura = horaApertura;
 		this.horaCierre = horaCierre;
 		this.tipo = tipo;
 		this.descripcion = descripcion;
+		this.hotel=hotel;
+		this.productos=productos;
 	}
 
+
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
+	public List<Long> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Long> productos) {
+		this.productos = productos;
+	}
 
 	/**
 	 * @return the id

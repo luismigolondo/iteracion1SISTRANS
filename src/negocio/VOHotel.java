@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 /**
  * Interfaz para los metodos get de HOTEL
  * @author jd.diazc
@@ -7,6 +9,7 @@ package negocio;
  */
 public interface VOHotel {
 
+	public List<Long[]> getClientes();
 	/**
 	 * 
 	 * @return el id del hotel
@@ -24,4 +27,6 @@ public interface VOHotel {
 	 * @return las estrellas de un hotel
 	 */
 	public Integer getEstrellas();
+	
+	
 }

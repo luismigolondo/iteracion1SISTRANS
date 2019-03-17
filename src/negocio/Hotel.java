@@ -3,6 +3,8 @@
  */
 package negocio;
 
+import java.util.List;
+
 /**
  * @author luisgomez
  *
@@ -15,16 +17,28 @@ public class Hotel implements VOHotel{
 
 	private Long id;
 	
+	private List<Long[]> clientes;
+	
 	public Hotel() {
 		estrellas = 0;
 		nombre = null;
 		id=null;
+		clientes=null;
 	}
 	
-	public Hotel(Long id,Integer numeroEstrellas, String nombre) {
+	public List<Long[]> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(List<Long[]> clientes) {
+		this.clientes = clientes;
+	}
+
+	public Hotel(Long id,Integer numeroEstrellas, String nombre,List<Long[]> clientes) {
 		this.estrellas = numeroEstrellas;
 		this.id=id;
 		this.nombre=nombre;
+		this.clientes=clientes;
 	}
 
 	/**
