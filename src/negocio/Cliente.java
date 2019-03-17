@@ -3,6 +3,9 @@
  */
 package negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author luisgomez
  *
@@ -14,52 +17,62 @@ public class Cliente implements VOCliente {
 		TI,
 		PASAPORTE
 	}
-	private Long id;
+	private long [] id;
 	
 	private String nombre;
-	
-	private TIPOS_DE_DOCUMENTO tipoIdentificacion;
-		
-	private Long numeroIdentificacion;
+			
+	private long numeroIdentificacion;
 	
 	private String correoElectronico;
 	
+	private List<Long> reservasHabitaciones;
+	
+	private long idHotel;
+	
+	private List<Long> reservasServicios;
+	
 	public Cliente () 
 	{
-		this.id=null;
+		this.id = new long [] {0,0};
 		this.nombre = "";
-		this.tipoIdentificacion = null;
-		this.numeroIdentificacion = null;
+		this.numeroIdentificacion = 0;
 		this.correoElectronico = "";
+		this.reservasHabitaciones = new ArrayList<>();
+		this.idHotel = 0;
+		this.reservasServicios = new ArrayList<>();
 	}
 
 	/**
+	 * @param id
 	 * @param nombre
-	 * @param tipoIdentificacion
-	 * @param rol
 	 * @param numeroIdentificacion
 	 * @param correoElectronico
+	 * @param reservasHabitaciones
+	 * @param idHotel
+	 * @param reservasServicios
 	 */
-	public Cliente(Long id,String nombre, TIPOS_DE_DOCUMENTO tipoIdentificacion, Long numeroIdentificacion,
-			String correoElectronico) {
-		this.id=id;
+	public Cliente(long[] id, String nombre, long numeroIdentificacion, String correoElectronico,
+			List<Long> reservasHabitaciones, long idHotel, List<Long> reservasServicios) {
+		this.id = id;
 		this.nombre = nombre;
-		this.tipoIdentificacion = tipoIdentificacion;
 		this.numeroIdentificacion = numeroIdentificacion;
 		this.correoElectronico = correoElectronico;
+		this.reservasHabitaciones = reservasHabitaciones;
+		this.idHotel = idHotel;
+		this.reservasServicios = reservasServicios;
 	}
 
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public long[] getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(long[] id) {
 		this.id = id;
 	}
 
@@ -78,30 +91,16 @@ public class Cliente implements VOCliente {
 	}
 
 	/**
-	 * @return the tipoIdentificacion
-	 */
-	public TIPOS_DE_DOCUMENTO getTipoIdentificacion() {
-		return tipoIdentificacion;
-	}
-
-	/**
-	 * @param tipoIdentificacion the tipoIdentificacion to set
-	 */
-	public void setTipoIdentificacion(TIPOS_DE_DOCUMENTO tipoIdentificacion) {
-		this.tipoIdentificacion = tipoIdentificacion;
-	}
-
-	/**
 	 * @return the numeroIdentificacion
 	 */
-	public Long getNumeroIdentificacion() {
+	public long getNumeroIdentificacion() {
 		return numeroIdentificacion;
 	}
 
 	/**
 	 * @param numeroIdentificacion the numeroIdentificacion to set
 	 */
-	public void setNumeroIdentificacion(Long numeroIdentificacion) {
+	public void setNumeroIdentificacion(long numeroIdentificacion) {
 		this.numeroIdentificacion = numeroIdentificacion;
 	}
 
@@ -118,6 +117,47 @@ public class Cliente implements VOCliente {
 	public void setCorreoElectronico(String correoElectronico) {
 		this.correoElectronico = correoElectronico;
 	}
-	
-	
+
+	/**
+	 * @return the reservasHabitaciones
+	 */
+	public List<Long> getReservasHabitaciones() {
+		return reservasHabitaciones;
+	}
+
+	/**
+	 * @param reservasHabitaciones the reservasHabitaciones to set
+	 */
+	public void setReservasHabitaciones(List<Long> reservasHabitaciones) {
+		this.reservasHabitaciones = reservasHabitaciones;
+	}
+
+	/**
+	 * @return the idHotel
+	 */
+	public long getIdHotel() {
+		return idHotel;
+	}
+
+	/**
+	 * @param idHotel the idHotel to set
+	 */
+	public void setIdHotel(long idHotel) {
+		this.idHotel = idHotel;
+	}
+
+	/**
+	 * @return the reservasServicios
+	 */
+	public List<Long> getReservasServicios() {
+		return reservasServicios;
+	}
+
+	/**
+	 * @param reservasServicios the reservasServicios to set
+	 */
+	public void setReservasServicios(List<Long> reservasServicios) {
+		this.reservasServicios = reservasServicios;
+	}
+
 }

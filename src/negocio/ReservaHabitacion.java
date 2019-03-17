@@ -17,22 +17,31 @@ public class ReservaHabitacion implements VOReservaHabitacion{
 		HABITACION_SENCILLA
 	}
 	
-	private Long id;
+	private long id;
 	
-	private Date fechaInicio;
+	private String fechaInicio;
 	
-	private Date fechaFin;
-	
+	private String fechaFin;
+		
 	private boolean checkedIn;
 	
 	private boolean checkedOut;
 	
+	private long [] cliente;
+	
+	private long idPlanDeConsumo;
+	
+	private long idHabitacion;
+	
 	public ReservaHabitacion () {
-		this.id = null;
+		this.id = 0;
 		this.fechaInicio = null;
 		this.fechaFin = null;
 		this.checkedIn = false;
 		this.checkedOut = false;
+		this.cliente = new long[] {0,0};
+		this.idPlanDeConsumo = 0;
+		this.idHabitacion = 0;
 	}
 	
 	/**
@@ -43,55 +52,57 @@ public class ReservaHabitacion implements VOReservaHabitacion{
 	 * @param checkedIn
 	 * @param checkedOut
 	 */
-	public ReservaHabitacion(Long id, Date fechaInicio, Date fechaFin) {
+	public ReservaHabitacion(long id, long [] cliente, long habitacion,
+			long plandeconsumo, String fechaInicio, String fechaFin) {
 		this.id = id;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.checkedIn = false;
 		this.checkedOut = false;
+		this.cliente = cliente;
+		this.idPlanDeConsumo = plandeconsumo;
+		this.idHabitacion = habitacion;
 	}
-
-
 
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
 	/**
 	 * @return the fechaInicio
 	 */
-	public Date getFechaInicio() {
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
 
 	/**
 	 * @param fechaInicio the fechaInicio to set
 	 */
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
 	/**
 	 * @return the fechaFin
 	 */
-	public Date getFechaFin() {
+	public String getFechaFin() {
 		return fechaFin;
 	}
 
 	/**
 	 * @param fechaFin the fechaFin to set
 	 */
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(String fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
@@ -105,7 +116,7 @@ public class ReservaHabitacion implements VOReservaHabitacion{
 	/**
 	 * @param checkedIn the checkedIn to set
 	 */
-	public void setCheckIn(boolean checkedIn) {
+	public void setCheckedIn(boolean checkedIn) {
 		this.checkedIn = checkedIn;
 	}
 
@@ -121,6 +132,48 @@ public class ReservaHabitacion implements VOReservaHabitacion{
 	 */
 	public void setCheckedOut(boolean checkedOut) {
 		this.checkedOut = checkedOut;
-	}	
+	}
+
+	/**
+	 * @return the idPlanDeConsumo
+	 */
+	public long getIdPlanDeConsumo() {
+		return idPlanDeConsumo;
+	}
+
+	/**
+	 * @param idPlanDeConsumo the idPlanDeConsumo to set
+	 */
+	public void setIdPlanDeConsumo(long idPlanDeConsumo) {
+		this.idPlanDeConsumo = idPlanDeConsumo;
+	}
+
+	/**
+	 * @return the idHabitacion
+	 */
+	public long getIdHabitacion() {
+		return idHabitacion;
+	}
+
+	/**
+	 * @param idHabitacion the idHabitacion to set
+	 */
+	public void setIdHabitacion(long idHabitacion) {
+		this.idHabitacion = idHabitacion;
+	}
+
+	/**
+	 * @return the cliente
+	 */
+	public long [] getCliente() {
+		return cliente;
+	}
+
+	/**
+	 * @param cliente the cliente to set
+	 */
+	public void setCliente(long [] cliente) {
+		this.cliente = cliente;
+	}
 	
 }

@@ -9,13 +9,13 @@ package negocio;
  */
 public class Producto implements VOProducto{
 
-	private Integer id;
+	private long id;
 	
 	private String nombre;
 	
 	private Double valor;
 	
-	private Integer idServicio;
+	private long idServicio;
 	
 	public Producto () {
 		this.id = 0;
@@ -30,7 +30,7 @@ public class Producto implements VOProducto{
 	 * @param valor
 	 * @param idServicio
 	 */
-	public Producto(Integer id, String nombre, Double valor, Integer idServicio) {
+	public Producto(long id, String nombre, Double valor, long idServicio) {
 		this.id = id;
 		this.nombre = nombre;
 		this.valor = valor;
@@ -40,14 +40,14 @@ public class Producto implements VOProducto{
 	/**
 	 * @return the id
 	 */
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -82,17 +82,15 @@ public class Producto implements VOProducto{
 	/**
 	 * @return the idServicio
 	 */
-	public Integer getIdServicio() {
+	public long getIdServicio() {
 		return idServicio;
 	}
 
 	/**
 	 * @param idServicio the idServicio to set
 	 */
-	public void setIdServicio(Integer idServicio) {
+	public void setIdServicio(long idServicio) {
 		this.idServicio = idServicio;
 	}
-	
-	
-	
+
 }

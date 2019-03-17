@@ -7,33 +7,49 @@ import negocio.ReservaHabitacion.TIPOS_DE_RESERVA;
 public interface VOReservaHabitacion {
 
 	/**
-	 * Interfaz para los metodos get de RESERVA
-	 * @return el id
+	 * @return the id
 	 */
-	public Long getId();
+	public long getId() ;
 
-	
+
 	/**
-	 * 
-	 * @return el inicio
+	 * @return the fechaInicio
 	 */
-	public Date getFechaInicio();
-	
+	public String getFechaInicio();
+
+
 	/**
-	 * 
-	 * @return la fecha final
+	 * @return the fechaFin
 	 */
-	public Date getFechaFin();
-	
+	public String getFechaFin();
+
+
 	/**
-	 * 
-	 * @return  el checkIn
+	 * @return the checkedIn
 	 */
-	public boolean isCheckedIn();
-	
+	public boolean isCheckedIn() ;
+
+
 	/**
-	 * 
-	 * @return el checkOut
+	 * @return the checkedOut
 	 */
 	public boolean isCheckedOut();
+
+	/**
+	 * @return the cliente
+	 */
+	public long [] getCliente();
+
+
+	/**
+	 * @return the idPlanDeConsumo
+	 */
+	public long getIdPlanDeConsumo();
+
+
+	/**
+	 * @return the idHabitacion
+	 */
+	public long getIdHabitacion();
+
 }

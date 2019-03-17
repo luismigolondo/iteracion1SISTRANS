@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 import negocio.Cliente.TIPOS_DE_DOCUMENTO;
 
 /**
@@ -10,27 +12,41 @@ import negocio.Cliente.TIPOS_DE_DOCUMENTO;
 public interface VOCliente {
 
 	/**
-	 * 
-	 * @return el nombre
+	 * @return the id
 	 */
-	public String getNombre();
-	
+	public long[] getId() ;
+
 	/**
-	 * 
-	 * @return el tipo de documento
+	 * @return the nombre
 	 */
-	public TIPOS_DE_DOCUMENTO getTipoIdentificacion();
-	
+	public String getNombre() ;
+
 	/**
-	 * 
-	 * @return el numero del documento de identificacion
+	 * @return the numeroIdentificacion
 	 */
-	public Long getNumeroIdentificacion();
-	
+	public long getNumeroIdentificacion() ;
+
 	/**
-	 * 
-	 * @return el correo electronico
+	 * @return the correoElectronico
 	 */
 	public String getCorreoElectronico();
+
+	/**
+	 * @return the reservasHabitaciones
+	 */
+	public List<Long> getReservasHabitaciones();
+
+
+	/**
+	 * @return the idHotel
+	 */
+	public long getIdHotel();
+
+
+	/**
+	 * @return the reservasServicios
+	 */
+	public List<Long> getReservasServicios();
+
 	
 }

@@ -268,10 +268,16 @@ public class PersistenciaCadenaHoteles {
 			long pIdPlanDeConsumo, String pFechaInicio, String pFechaFin) {
 	PersistenceManager pm = pmf.getPersistenceManager();
 	Transaction tx = pm.currentTransaction();
-//	try
-//	{
-//		
-//	}
+	try
+	{
+		tx.begin();
+		
+		long tupla = sqlReservas_Habitaciones.adicionarReserva(pm, pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
+		tx.commit();
+		
+		log.trace("Insercion reserva: " + pId + ": " + tupla + " tuplas insertadas" );
+		return new ReservaHabitacion(pId, pFechaInicio, pFechaFin, p);
+	}
 		return null;
 	}
 
