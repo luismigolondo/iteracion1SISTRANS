@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.ArrayList;
+
 import negocio.Cliente.TIPOS_DE_DOCUMENTO;
 
 public class Empleado implements VOEmpleado{
@@ -22,6 +24,8 @@ public class Empleado implements VOEmpleado{
 	
 	private Double salario;
 	
+	private Hotel hotel;
+
 	public Empleado (){
 		this.nombre="";
 		this.tipoDeIdentificacion=null;
@@ -29,6 +33,7 @@ public class Empleado implements VOEmpleado{
 		this.rol=null;
 		this.salario=0.0;
 		this.correoElectronico=null;
+		this.hotel=null;
 	}
 	
 	/**
@@ -40,15 +45,24 @@ public class Empleado implements VOEmpleado{
 	 * @param salario
 	 */
 	public Empleado(String correoElectronico, String nombre, TIPOS_DE_DOCUMENTO tipoDeIdentificacion, Long numeroIdentificacion, ROLES rol,
-			Double salario) {
+			Double salario, Hotel hotel) {
 		this.nombre = nombre;
 		this.tipoDeIdentificacion = tipoDeIdentificacion;
 		this.numeroIdentificacion = numeroIdentificacion;
 		this.rol = rol;
 		this.salario = salario;
 		this.correoElectronico=correoElectronico;
+		this.hotel=hotel;
 	}
 
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+	
 	/**
 	 * @return the nombre
 	 */

@@ -6,7 +6,13 @@ public interface VOReservaServicio {
 
 	public Long getId();
 	
-	public Date getHoraInicio();
+	public String getHoraInicio();
 	
-	public Date getHoraFin();
+	public String getHoraFin();
+	
+	public Cliente getCliente();
+	
+	public PlanesDeConsumo getPlanDeConsumo();
+	
+	public Habitacion getHabitacion();
 }
