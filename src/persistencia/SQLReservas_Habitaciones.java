@@ -4,10 +4,11 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 /**
- * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto reserva habitacion de Parranderos
+ * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto reserva habitacion del hotel
  * Nótese que es una clase que es sólo conocida en el paquete de persistencia
  * 
  * @author Germán Bravo MODIFICADO POR: LUIS MIGUEL GOMEZ Y JUAN DAVID DIAZ
+
  */
 public class SQLReservas_Habitaciones {
 
@@ -39,6 +40,19 @@ public class SQLReservas_Habitaciones {
 				"(ID, ID_CLIENTE, TIPO_IDENTIFICACION, ID_HABITACION, ID_PLAN_DE_CONSUMO, "
 				+ "FECHA_INICIO, FECHA_FIN, CHECKED_IN, CHECKED_OUT) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		q.setParameters(pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin, 0, 0);
+		return (long) q.executeUnique();
+	}
+
+	public long registrarSalidaCliente(PersistenceManager pm, long idReserva) {
+		// TODO Auto-generated method stub
+		Query q = pm.newQuery(SQL,"UPDATE "+ ph.darTablaReservasHabitaciones() + " SET CHECKED_OUT = ?");
+		q.setParameters(1);
+		return (long) q.executeUnique();
+	}
+
+	public long registrarLlegadaCliente(PersistenceManager pm, long pIdReserva) {
+		Query q = pm.newQuery(SQL,"UPDATE "+ ph.darTablaReservasHabitaciones() + " SET CHECKED_IN = ?");
+		q.setParameters(1);
 		return (long) q.executeUnique();
 	}
 }
