@@ -1,6 +1,7 @@
 package negocio;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  * Interfaz para los metodos get de SERVICIO
@@ -44,4 +45,8 @@ public interface VOServicio {
 	 * @return la descripcion del servicio
 	 */
 	public String getDescripcion();
+	
+	public Hotel getHotel();
+	
+	public List<Long> getProductos();
 }

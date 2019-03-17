@@ -8,16 +8,10 @@ package negocio;
  *
  */
 public class PlanesDeConsumo implements VOPlanesDeConsumo{
-
-	public enum PLANES_DE_CONSUMO {
-		LARGA_ESTADIA,
-		TIEMPO_COMPARTIDO,
-		TODO_INCLUIDO
-	}
 	
-	private Long id;
+	private long id;
 	
-	private PLANES_DE_CONSUMO tipo;
+	private long tipo;
 	
 	private Double descuento;
 	
@@ -25,12 +19,15 @@ public class PlanesDeConsumo implements VOPlanesDeConsumo{
 	
 	private Double costoFijo;
 	
+	private Hotel hotel;
+	
 	public PlanesDeConsumo () {
-		this.tipo = null;
+		this.tipo = 0;
 		this.descuento = 0.0;
 		this.minNoches = 0;
 		this.costoFijo = 0.0;
-		this.id=null;
+		this.id=0;
+		this.hotel=null;
 	}
 
 	/**
@@ -39,39 +36,48 @@ public class PlanesDeConsumo implements VOPlanesDeConsumo{
 	 * @param minNoches
 	 * @param costoFijo
 	 */
-	public PlanesDeConsumo(Long id,PLANES_DE_CONSUMO tipo, Double descuento, Integer minNoches, Double costoFijo) {
+	public PlanesDeConsumo(Long id,int tipo, Double descuento, Integer minNoches, Double costoFijo, Hotel hotel) {
 		this.tipo = tipo;
 		this.descuento = descuento;
 		this.minNoches = minNoches;
 		this.costoFijo = costoFijo;
 		this.id=id;
+		this.hotel=hotel;
 	}
 	
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
 	/**
 	 * @return the tipo
 	 */
-	public PLANES_DE_CONSUMO getTipo() {
+	public long getTipo() {
 		return tipo;
 	}
 
 	/**
 	 * @param tipo the tipo to set
 	 */
-	public void setTipo(PLANES_DE_CONSUMO tipo) {
+	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
 
