@@ -21,6 +21,10 @@ public class PlanesDeConsumo implements VOPlanesDeConsumo{
 	
 	private Hotel hotel;
 	
+	public void setTipo(long tipo) {
+		this.tipo = tipo;
+	}
+
 	public PlanesDeConsumo () {
 		this.tipo = 0;
 		this.descuento = 0.0;
