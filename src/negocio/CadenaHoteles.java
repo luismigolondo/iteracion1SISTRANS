@@ -51,21 +51,33 @@ public class CadenaHoteles {
 		return reserva;
 	}
 	//RF9
-	public ReservaHabitacion registrarLlegadaCliente(Long pIdReserva, Long pIdCliente)
+	public long registrarLlegadaCliente(Long pIdReserva)
 	{
-		log.info("Registrando cliente: " + pIdCliente + " de la reserva: " + pIdReserva);
-		ReservaHabitacion registrar = persistencia.RF9registrarLlegadaCliente(pIdReserva, pIdCliente);
+		log.info("Registrando cliente:  de la reserva: " + pIdReserva);
+		long registrar = persistencia.RF9registrarLlegadaCliente(pIdReserva);
 		log.info("La reserva: " + registrar + " fue activada.");
 		return registrar;
 	}
-
-	public ReservaHabitacion registrarSalidaCliente(Long pIdReserva, Long pIdCliente)
+	
+	//RF10
+	public Gasto registrarConsumoServicio(long idHabitacion, long idProducto)
+	{
+		log.info("Registrando consumo cliente de la habitacion : "+ idHabitacion +"el producto " + idProducto );
+		Gasto gasto = persistencia.RF10registrarConsumoServicio(idHabitacion, idProducto);
+		log.info("Se agrego el producto " + idProducto + " a la cuenta de la habitación "+idHabitacion);
+		return gasto;
+	}
+	
+	//RF11
+	public long registrarSalidaCliente(long pIdReserva, long pIdCliente)
 	{
 		log.info("Realizando checkout: " + pIdCliente + " de la reserva: " + pIdReserva);
-		ReservaHabitacion checkout = persistencia.checkout(pIdReserva, pIdCliente);
+		long checkout = persistencia.RF11registrarSalidaCliente(pIdReserva);
 		log.info("Se realiz� el checkout de la habitaci�n "+checkout);
 		return checkout;
 	}
+	
+	
 	public long[] limpiarHoteles() {
 		log.info ("Limpiando la BD de Cadena de Hoteles");
         long [] borrrados = persistencia.limpiarParranderos();	
