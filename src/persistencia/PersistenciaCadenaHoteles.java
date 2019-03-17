@@ -344,20 +344,78 @@ public class PersistenciaCadenaHoteles {
 		}
 	}
 
-	public ReservaHabitacion RF9registrarLlegadaCliente(Long pIdReserva, Long pIdCliente) {
+	public long RF9registrarLlegadaCliente(long pIdReserva) {
 		// TODO Auto-generated method stub
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			long resp = sqlReservas_Habitaciones.registrarLlegadaCliente(pm,pIdReserva);
+			tx.commit();
+			return resp;
+		}
+		catch(Exception e)
+		{
+			log.error("Exception : "+e.getMessage()+ "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally{
+			if(tx.isActive())
+				tx.rollback();
+			pm.close();
+		}
 	}
 	
 	//servicio, nosotros manejamos lo que ofrecen los servicios como productos.
-	public Gasto RF10registrarConsumoServicio()
+	public Gasto RF10registrarConsumoServicio(long idHabitacion, long idProducto)
 	{
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try{
+        	tx.begin();
+        	long idGasto = nextval();
+        	long tupla = sqlGastos.registrarConsumoServicio(pm,idGasto,idHabitacion,idProducto);
+        	tx.commit();
+        	
+        	return new Gasto(idHabitacion, idProducto);
+        }
+        catch(Exception e)
+        {
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+		
 	}
 	
-	public ReservaHabitacion RF11registrarSalidaCliente()
+	public long RF11registrarSalidaCliente(long idReserva)
 	{
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			long resp = sqlReservas_Habitaciones.registrarSalidaCliente(pm,idReserva);
+			tx.commit();
+			return resp;
+		}
+		catch(Exception e)
+		{
+			log.error("Exception : "+e.getMessage()+ "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally{
+			if(tx.isActive())
+				tx.rollback();
+			pm.close();
+		}
+	
 	}
 
 
