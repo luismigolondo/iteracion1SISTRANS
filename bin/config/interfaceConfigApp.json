@@ -14,7 +14,7 @@
 				},
 				{
 					"label": "REG.RESERVA SERVICIO CLIENTE RF8",
-					"event": "listarTipoBebida"
+					"event": "RF8registrarReservaServicio"
 				},
 				{
 					"label": "REG. LLEGADA CLIENTE RF9",
