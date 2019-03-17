@@ -4,15 +4,14 @@ import java.sql.Date;
 
 public interface VOReservaServicio {
 
-	public Long getId();
+	public long getId();
 	
 	public String getHoraInicio();
 	
 	public String getHoraFin();
 	
-	public Cliente getCliente();
+	public long[] getCliente();
 	
-	public PlanesDeConsumo getPlanDeConsumo();
+	public long getServicio();
 	
-	public Habitacion getHabitacion();
 }

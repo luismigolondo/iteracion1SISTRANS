@@ -31,7 +31,7 @@ public class CadenaHoteles {
 		persistencia.cerrarPersistencia();
 	}
 	
-	//RF7 y RF8 depende del tipo de reserva
+	//RF7
 	public ReservaHabitacion adicionarReserva(long pId, long pIdCliente, long pIdTipoId, long pIdHabitacion,
 			long pIdPlanDeConsumo, String pFechaInicio, String pFechaFin)
 	{
