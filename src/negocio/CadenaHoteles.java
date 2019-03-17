@@ -32,10 +32,11 @@ public class CadenaHoteles {
 	}
 	
 	//RF7 y RF8 depende del tipo de reserva
-	public ReservaHabitacion adicionarReserva(Long pId, Long pIdHotel, Long pIdCliente, int pTipoID, Long pPlanDeConsumo, int pTipoReserva, Date pFechaInicio, Date pFechaFin)
+	public ReservaHabitacion adicionarReserva(long pId, long pIdCliente, long pIdTipoId, long pIdHabitacion,
+			long pIdPlanDeConsumo, String pFechaInicio, String pFechaFin)
 	{
 		log.info("Creando reserva: " + pId + ", Para el cliente: " + pIdCliente);
-		ReservaHabitacion reserva = persistencia.adicionarReserva(pId, pIdHotel, pIdCliente, pTipoID, pPlanDeConsumo, pTipoReserva, pFechaInicio, pFechaFin);
+		ReservaHabitacion reserva = persistencia.adicionarReserva(pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
 		log.info("Reserva creada: " + reserva);
 		return reserva;
 	}
@@ -52,7 +53,7 @@ public class CadenaHoteles {
 	{
 		log.info("Realizando checkout: " + pIdCliente + " de la reserva: " + pIdReserva);
 		ReservaHabitacion checkout = persistencia.checkout(pIdReserva, pIdCliente);
-		log.info("Se realizó el checkout de la habitación "+checkout);
+		log.info("Se realizï¿½ el checkout de la habitaciï¿½n "+checkout);
 		return checkout;
 	}
 	public long[] limpiarHoteles() {

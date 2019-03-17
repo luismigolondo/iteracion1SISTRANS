@@ -6,7 +6,9 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Transaction;
 
 import com.google.gson.JsonObject;
 
@@ -20,7 +22,7 @@ public class PersistenciaHoteles {
 	///--------------------------------------
 	
 	/**
-	 * Logger para escribir la traza de la ejecución
+	 * Logger para escribir la traza de la ejecuciï¿½n
 	 */
 	private static Logger log = Logger.getLogger(PersistenciaHoteles.class.getName());
 
@@ -142,10 +144,16 @@ public class PersistenciaHoteles {
 		instance = null;
 	}
 
+// DD/MM/YYYY
+	public ReservaHabitacion adicionarReserva(long pId, long pIdCliente, long pIdTipoId, long pIdHabitacion,
+			long pIdPlanDeConsumo, String pFechaInicio, String pFechaFin) {
+	PersistenceManager pm = pmf.getPersistenceManager();
+	Transaction tx = pm.currentTransaction();
+//	try
+//	{
+//		
+//	}
 
-	public ReservaHabitacion adicionarReserva(Long pId, Long pIdHotel, Long pIdCliente, int pTipoID, Long pPlanDeConsumo,
-			int pTipoReserva, Date pFechaInicio, Date pFechaFin) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
