@@ -36,7 +36,7 @@ public class CadenaHoteles {
 			long pIdPlanDeConsumo, String pFechaInicio, String pFechaFin)
 	{
 		log.info("Creando reserva: " + pId + ", Para el cliente: " + pIdCliente);
-		ReservaHabitacion reserva = persistencia.adicionarReserva(pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
+		ReservaHabitacion reserva = persistencia.RF7adicionarReservaHabitacion(pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
 		log.info("Reserva creada: " + reserva);
 		return reserva;
 	}
@@ -44,7 +44,7 @@ public class CadenaHoteles {
 	public ReservaHabitacion registrarLlegadaCliente(Long pIdReserva, Long pIdCliente)
 	{
 		log.info("Registrando cliente: " + pIdCliente + " de la reserva: " + pIdReserva);
-		ReservaHabitacion registrar = persistencia.registrarLlegada(pIdReserva, pIdCliente);
+		ReservaHabitacion registrar = persistencia.RF9registrarLlegadaCliente(pIdReserva, pIdCliente);
 		log.info("La reserva: " + registrar + " fue activada.");
 		return registrar;
 	}
