@@ -55,17 +55,16 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	/**
 	 * Ruta al archivo de configuración de la interfaz
 	 */
-	private static final String CONFIG_INTERFAZ = "./src/main/resources/config/interfaceConfigApp.json"; 
+	private static final String CONFIG_INTERFAZ = "./resources/config/interfaceConfigApp.json"; 
 	
 	/**
 	 * Ruta al archivo de configuración de los nombres de tablas de la base de datos
 	 */
-	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD_A.json"; 
+//	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD_A.json"; 
 	
 	//---------------------------------------------------
 	// ATRIBUTOS
 	//---------------------------------------------------
-	private JsonObject tableConfig;
 	
 	private CadenaHoteles hoteles;
 	
@@ -94,8 +93,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
      	   crearMenu( guiConfig.getAsJsonArray("menuBar") );
         }
         
-        tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
-        hoteles = new CadenaHoteles(tableConfig);
+        //hoteles = new CadenaHoteles();
         
     	String path = guiConfig.get("bannerPath").getAsString();
         panelDatos = new PanelDeDatos ( );
