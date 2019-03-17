@@ -35,6 +35,7 @@ import com.google.gson.stream.JsonReader;
 
 import negocio.CadenaHoteles;
 import negocio.Hotel;
+import negocio.VOReservaHabitacion;
 
 /**
  * Clase principal de la interfaz
@@ -57,10 +58,11 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	 */
 	private static final String CONFIG_INTERFAZ = "./resources/config/interfaceConfigApp.json"; 
 	
+	
 	/**
 	 * Ruta al archivo de configuraci�n de los nombres de tablas de la base de datos
 	 */
-//	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD_A.json"; 
+	private static final String CONFIG_TABLAS = "./resources/config/TablasBD_A.json"; 
 	
 	//---------------------------------------------------
 	// ATRIBUTOS
@@ -69,6 +71,8 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	private CadenaHoteles hoteles;
 	
 	private JsonObject guiConfig;
+	
+	private JsonObject tableConfig;
 	
 	private PanelDeDatos panelDatos;
 	
@@ -93,7 +97,8 @@ public class InterfazHoteles extends JFrame implements ActionListener{
      	   crearMenu( guiConfig.getAsJsonArray("menuBar") );
         }
         
-        hoteles = new CadenaHoteles();
+        tableConfig = openConfig("Tablas BD", CONFIG_TABLAS);
+        hoteles = new CadenaHoteles(tableConfig);
         
     	String path = guiConfig.get("bannerPath").getAsString();
         panelDatos = new PanelDeDatos ( );
@@ -208,32 +213,39 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	//------------------------------------
     public void RF7registrarReservaHabitacion( )
     {
-//    	try 
-//    	{
-//    		String nombreTipo = JOptionPane.showInputDialog (this, "Nombre del tipo de bedida?", "Adicionar tipo de bebida", JOptionPane.QUESTION_MESSAGE);
-//    		if (nombreTipo != null)
-//    		{
-//        		VOTipoBebida tb = parranderos.adicionarTipoBebida (nombreTipo);
-//        		if (tb == null)
-//        		{
-//        			throw new Exception ("No se pudo crear un tipo de bebida con nombre: " + nombreTipo);
-//        		}
-//        		String resultado = "En adicionarTipoBebida\n\n";
-//        		resultado += "Tipo de bebida adicionado exitosamente: " + tb;
-//    			resultado += "\n Operaci�n terminada";
-//    			panelDatos.actualizarInterfaz(resultado);
-//    		}
-//    		else
-//    		{
-//    			panelDatos.actualizarInterfaz("Operaci�n cancelada por el usuario");
-//    		}
-//		} 
-//    	catch (Exception e) 
-//    	{
-////			e.printStackTrace();
-//			String resultado = generarMensajeError(e);
-//			panelDatos.actualizarInterfaz(resultado);
-//		}
+    	try 
+    	{
+    		long id = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el identificador de la reserva a crear", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE));
+    		long idCliente = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese la cedula de ciduadania del cliente", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE));
+    		long tipoId = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el tipo de identificacion", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE));
+    		long idHabitacion = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el numero de la habitacion", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE));
+    		long idPlanDeConsumo = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el plan de consumo para la reserva", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE));
+    		String idFinic = JOptionPane.showInputDialog (this, "Ingrese la fecha de inicio DD/MM/AAAA", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE);
+    		String idFfin= JOptionPane.showInputDialog (this, "Ingrese la fecha de fin DD/MM/AAAA", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE);
+    		
+    		if (id != 0)
+    		{
+        		VOReservaHabitacion tb = hoteles.adicionarReservaHabitacion(id, idCliente, tipoId, idHabitacion, idPlanDeConsumo, idFinic, idFfin);
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear la reserva: " + id);
+        		}
+        		String resultado = "En adicionarReservaHabitacion\n\n";
+        		resultado += "Reserva adicionada exitosamente: " + tb;
+    			resultado += "\n Operaci�n terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operaci�n cancelada por recepcion");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
     }
 
     /**

@@ -80,7 +80,7 @@ public class PersistenciaCadenaHoteles {
 	private SQLTipo_Rol sqlTipo_Rol;
 
 	private PersistenciaCadenaHoteles(){
-		pmf = JDOHelper.getPersistenceManagerFactory("Hoteles");
+		pmf = JDOHelper.getPersistenceManagerFactory("CadenaHoteles");
 		crearClasesSQL();
 
 		tablas = new LinkedList<String>();
