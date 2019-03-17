@@ -18,7 +18,7 @@ public class CadenaHoteles {
 	private static Logger log = Logger.getLogger(Hotel.class.getName());
 
 	private PersistenciaCadenaHoteles persistencia;
-	
+
 	public CadenaHoteles() {
 		persistencia = PersistenciaCadenaHoteles.getInstance();
 	}
@@ -26,30 +26,30 @@ public class CadenaHoteles {
 	{
 		persistencia = PersistenciaCadenaHoteles.getInstance(configuracionTabla);
 	}
-	
+
 	public void cerrarPersistencia() {
 		persistencia.cerrarPersistencia();
 	}
-	
+
 	//RF7
-	public ReservaHabitacion adicionarReserva(long pId, long pIdCliente, long pIdTipoId, long pIdHabitacion,
+	public ReservaHabitacion adicionarReservaHabitacion(long pId, long pIdCliente, long pIdTipoId, long pIdHabitacion,
 			long pIdPlanDeConsumo, String pFechaInicio, String pFechaFin)
 	{
-		log.info("Creando reserva: " + pId + ", Para el cliente: " + pIdCliente);
+		log.info("Creando reserva habitacion: " + pId + ", Para el cliente: " + pIdCliente);
 		ReservaHabitacion reserva = persistencia.RF7adicionarReservaHabitacion(pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
 		log.info("Reserva creada: " + reserva);
 		return reserva;
 	}
-	
+
 	//RF8
-	public ReservaServicio adicionarReservaServicio(long id, String horaInicio,String horaFin, long pIdCliente,long pIdTipoId, long servicio) 
+	public ReservaServicio adicionarReservaServicio(long id, String horaInicio, String horaFin, long pIdCliente, 
+			long pIdTipoId, long servicio)
 	{
-		log.info("Creando reserva: " + id + ", Para el cliente: " + pIdCliente);
+		log.info("Creando reserva servicio: " + id + ", Para el cliente: " + pIdCliente);
 		ReservaServicio reserva = persistencia.RF8adicionarReservaServicio(id, horaInicio, horaFin, pIdCliente, pIdTipoId, servicio);
-		log.info("Reserva creada: "+ reserva);
+		log.info("Reserva creada: " + reserva);
 		return reserva;
 	}
-	
 	//RF9
 	public long registrarLlegadaCliente(Long pIdReserva)
 	{
@@ -79,9 +79,11 @@ public class CadenaHoteles {
 	
 	
 	public long[] limpiarHoteles() {
-		// TODO Auto-generated method stub
-		return null;
+		log.info ("Limpiando la BD de Cadena de Hoteles");
+        long [] borrrados = persistencia.limpiarParranderos();	
+        log.info ("Limpiando la BD de Hoteles: Listo!");
+        return borrrados;
 	}
-	
-	
+
+
 }

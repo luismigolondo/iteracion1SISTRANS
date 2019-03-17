@@ -418,5 +418,31 @@ public class PersistenciaCadenaHoteles {
 	
 	}
 
+	public long[] limpiarParranderos() {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long [] resp = sqlUtil.limpiarCadenaHoteles(pm);
+			tx.commit();
+			log.info("Borrada la base de datos de hoteles");
+			return resp;
+		}
+		catch(Exception e)
+		{
+			log.error("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return new long[] {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
 
 }
