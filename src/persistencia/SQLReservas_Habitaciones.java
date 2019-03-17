@@ -4,16 +4,16 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 /**
- * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BEBEDOR de Parranderos
+ * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto reserva habitacion del hotel
  * Nótese que es una clase que es sólo conocida en el paquete de persistencia
- * MODIFICADO POR LUIS MIGUEL GÓMEZ Y JUAN DAVID DIAZ
  * 
- * @author Germán Bravo
+ * @author Germán Bravo MODIFICADO POR: LUIS MIGUEL GOMEZ Y JUAN DAVID DIAZ
+
  */
 public class SQLReservas_Habitaciones {
 
 	private final static String SQL = PersistenciaCadenaHoteles.SQL;
-	
+
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
@@ -36,8 +36,11 @@ public class SQLReservas_Habitaciones {
 
 	public long adicionarReserva(PersistenceManager pm, long pId, long pIdCliente, long pIdTipoId, long pIdHabitacion,
 			long pIdPlanDeConsumo, String pFechaInicio, String pFechaFin) {
-		// TODO Auto-generated method stub
-		return 0;
+		Query q = pm.newQuery(SQL, "INSERT INTO " + ph.darTablaReservasHabitaciones() + 
+				"(ID, ID_CLIENTE, TIPO_IDENTIFICACION, ID_HABITACION, ID_PLAN_DE_CONSUMO, "
+				+ "FECHA_INICIO, FECHA_FIN, CHECKED_IN, CHECKED_OUT) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		q.setParameters(pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin, 0, 0);
+		return (long) q.executeUnique();
 	}
 
 	public long registrarSalidaCliente(PersistenceManager pm, long idReserva) {

@@ -15,7 +15,10 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import negocio.Cliente;
 import negocio.Gasto;
+import negocio.Habitacion;
+import negocio.PlanesDeConsumo;
 import negocio.ReservaHabitacion;
 import negocio.ReservaServicio;
 
@@ -290,7 +293,7 @@ public class PersistenciaCadenaHoteles {
 			long tupla = sqlReservas_Habitaciones.adicionarReserva(pm, pId, pIdCliente, pIdTipoId, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
 			tx.commit();
 
-			log.trace("Insercion reserva: " + pId + ": " + tupla + " tuplas insertadas" );
+			log.trace("Insercion reserva habitacion: " + pId + ": " + tupla + " tuplas insertadas" );
 			long [] idCliente = new long [] {pIdCliente, pIdTipoId};
 			return new ReservaHabitacion(pId, idCliente, pIdHabitacion, pIdPlanDeConsumo, pFechaInicio, pFechaFin);
 		}
@@ -305,7 +308,7 @@ public class PersistenciaCadenaHoteles {
 			{
 				tx.rollback();
 			}
-			pm.close();
+		  	pm.close();
 		}
 	}
 	
@@ -313,9 +316,32 @@ public class PersistenciaCadenaHoteles {
 	 * 
 	 * @return
 	 */
-	public ReservaServicio RF8adicionarReservaServicio()
+	public ReservaServicio RF8adicionarReservaServicio(long id, String horaInicio, String horaFin, long pIdCliente, long pIdTipoId, long servicio)
 	{
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long tupla = sqlReservas_Servicios.adicionarReserva(pmf.getPersistenceManager(), id, horaInicio, horaFin, pIdCliente, pIdTipoId, servicio);
+			tx.commit();
+			
+			log.trace("Insercion reserva servicio: " + id + ": " + tupla + " tuplas insertadas" );
+			long [] cliente = new long [] {pIdCliente, pIdTipoId};
+			return new ReservaServicio(id, horaInicio, horaFin, cliente, servicio);
+		}
+		catch (Exception e) {
+			log.error("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;		
+		}
+		finally
+		{
+			if(tx.isActive())
+			{
+				tx.rollback();
+			}
+		  	pm.close();
+		}
 	}
 
 	public long RF9registrarLlegadaCliente(long pIdReserva) {

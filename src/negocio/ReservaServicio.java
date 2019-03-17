@@ -19,29 +19,24 @@ public class ReservaServicio implements VOReservaServicio {
 	 */
 	private String horaFin;
 
-	private Cliente cliente;
+	private long[] cliente;
 	
-	private PlanesDeConsumo planDeConsumo;
-	
-	private Habitacion habitacion;
-	
+	private long servicio;
+		
 	public ReservaServicio() {
 		this.id = 0;
 		this.horaInicio = null;
 		this.horaFin = null;
-		this.cliente = null;
-		this.planDeConsumo = null;
-		this.habitacion = null;
+		this.cliente = new long[] {0,0};
+		this.servicio = 0;
 	}
 	
-	public ReservaServicio(Long id, String horaInicio, String horaFin, Cliente cliente, PlanesDeConsumo planDeConsumo,
-			Habitacion habitacion) {
+	public ReservaServicio(long id, String horaInicio, String horaFin, long[] cliente, long planDeConsumo) {
 		this.id = id;
 		this.horaInicio = horaInicio;
 		this.horaFin = horaFin;
 		this.cliente = cliente;
-		this.planDeConsumo = planDeConsumo;
-		this.habitacion = habitacion;
+		this.servicio = planDeConsumo;
 	}
 
 	/**
@@ -54,7 +49,7 @@ public class ReservaServicio implements VOReservaServicio {
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -86,29 +81,20 @@ public class ReservaServicio implements VOReservaServicio {
 		this.horaFin = horaFin;
 	}
 
-	public Cliente getCliente() {
+	public long[] getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Cliente cliente) {
+	public void setCliente(long[] cliente) {
 		this.cliente = cliente;
 	}
 
-	public PlanesDeConsumo getPlanDeConsumo() {
-		return planDeConsumo;
+	public long getServicio() {
+		return servicio;
 	}
 
-	public void setPlanDeConsumo(PlanesDeConsumo planDeConsumo) {
-		this.planDeConsumo = planDeConsumo;
+	public void setServicio(long servicio) {
+		this.servicio = servicio;
 	}
-
-	public Habitacion getHabitacion() {
-		return habitacion;
-	}
-
-	public void setHabitacion(Habitacion habitacion) {
-		this.habitacion = habitacion;
-	}
-	
 	
 }

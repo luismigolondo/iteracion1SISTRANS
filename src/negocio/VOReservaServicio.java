@@ -10,9 +10,8 @@ public interface VOReservaServicio {
 	
 	public String getHoraFin();
 	
-	public Cliente getCliente();
+	public long[] getCliente();
 	
-	public PlanesDeConsumo getPlanDeConsumo();
+	public long getServicio();
 	
-	public Habitacion getHabitacion();
 }
