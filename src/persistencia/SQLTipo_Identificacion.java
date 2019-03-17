@@ -8,7 +8,7 @@ public class SQLTipo_Identificacion {
 	/**
 	 * El manejador de persistencia general de la aplicación
 	 */
-	private PersistenciaHoteles ph;
+	private PersistenciaCadenaHoteles ph;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -17,7 +17,7 @@ public class SQLTipo_Identificacion {
 	 * Constructor
 	 * @param ph - El Manejador de persistencia de la aplicación
 	 */
-	public SQLTipo_Identificacion(PersistenciaHoteles ph)
+	public SQLTipo_Identificacion(PersistenciaCadenaHoteles ph)
 	{
 		this.ph = ph;
 	}

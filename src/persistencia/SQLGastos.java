@@ -8,7 +8,7 @@ public class SQLGastos {
 	/**
 	 * El manejador de persistencia general de la aplicación
 	 */
-	private PersistenciaHoteles ph;
+	private PersistenciaCadenaHoteles ph;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -17,7 +17,7 @@ public class SQLGastos {
 	 * Constructor
 	 * @param ph - El Manejador de persistencia de la aplicación
 	 */
-	public SQLGastos(PersistenciaHoteles ph)
+	public SQLGastos(PersistenciaCadenaHoteles ph)
 	{
 		this.ph = ph;
 	}
