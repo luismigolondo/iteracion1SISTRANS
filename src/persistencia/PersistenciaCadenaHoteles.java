@@ -95,10 +95,10 @@ public class PersistenciaCadenaHoteles {
 		tablas.add("RESERVAS_HABITACIONES");
 		tablas.add("RESERVAS_SERVICIOS");
 		tablas.add("SERVICIOS");
-		tablas.add("TIPO_IDENTIFICACION");
-		tablas.add("TIPO_PLAN_DE_CONSUMO");
-		tablas.add("TIPO_RESERVA_HABITACION");
-		tablas.add("TIPO_ROL");
+		tablas.add("TIPOS_IDENTIFICACION");
+		tablas.add("TIPOS_PLAN_DE_CONSUMOS");
+		tablas.add("TIPOS_RESERVA_HABITACION");
+		tablas.add("TIPOS_ROL");
 	}
 
 	private PersistenciaCadenaHoteles(JsonObject configTabla)
