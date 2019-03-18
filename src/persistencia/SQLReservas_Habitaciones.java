@@ -4,11 +4,9 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 /**
- * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto reserva habitacion del hotel
- * Nótese que es una clase que es sólo conocida en el paquete de persistencia
- * 
- * @author Germán Bravo MODIFICADO POR: LUIS MIGUEL GOMEZ Y JUAN DAVID DIAZ
-
+ * Clase de sql de reservas de habitaciones de la cadena de hoteles.
+ * @author Germ�n Bravo
+ * MODIFICADO POR LUIS MIGUEL GOMEZ Y JUAN DAVID DIAZ PARA LA ITERACION 1 DE SISTEMAS TRANSACCIONALES.
  */
 public class SQLReservas_Habitaciones {
 

@@ -3,6 +3,11 @@ package persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+/**
+ * Clase de sql del reservas servicios de la cadena de hoteles.
+ * @author Germ�n Bravo
+ * MODIFICADO POR LUIS MIGUEL GOMEZ Y JUAN DAVID DIAZ PARA LA ITERACION 1 DE SISTEMAS TRANSACCIONALES.
+ */
 public class SQLReservas_Servicios {
 
 	private final static String SQL = PersistenciaCadenaHoteles.SQL;

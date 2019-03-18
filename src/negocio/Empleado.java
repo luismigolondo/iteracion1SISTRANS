@@ -3,7 +3,11 @@ package negocio;
 import java.util.ArrayList;
 
 import negocio.Cliente.TIPOS_DE_DOCUMENTO;
-
+/**
+ * 
+ * @author luisgomez
+ *
+ */
 public class Empleado implements VOEmpleado{
 
 	public enum ROLES {

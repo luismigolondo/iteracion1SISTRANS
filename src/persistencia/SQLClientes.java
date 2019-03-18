@@ -1,6 +1,11 @@
 package persistencia;
 
 import javax.jdo.PersistenceManager;
+/**
+ * Clase de sql del cliente de la cadena de hoteles.
+ * @author Germ�n Bravo
+ * MODIFICADO POR LUIS MIGUEL GOMEZ Y JUAN DAVID DIAZ PARA LA ITERACION 1 DE SISTEMAS TRANSACCIONALES.
+ */
 import javax.jdo.Query;
 
 import negocio.Cliente;

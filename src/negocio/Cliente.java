@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author luisgomez
- *
+ * Clase de cliente de la cadena de hoteles.
+ * @author Luis Miguel Gomez
+ * MODIFICADO POR LUIS MIGUEL GOMEZ Y JUAN DAVID DIAZ PARA LA ITERACION 1 DE SISTEMAS TRANSACCIONALES.
  */
 public class Cliente implements VOCliente {
 

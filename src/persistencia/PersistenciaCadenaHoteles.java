@@ -22,6 +22,11 @@ import negocio.PlanesDeConsumo;
 import negocio.ReservaHabitacion;
 import negocio.ReservaServicio;
 
+/**
+ * Clase de persistencia de la cadena de hoteles.
+ * @author Germ�n Bravo
+ * MODIFICADO POR LUIS MIGUEL GOMEZ Y JUAN DAVID DIAZ PARA LA ITERACION 1 DE SISTEMAS TRANSACCIONALES.
+ */
 public class PersistenciaCadenaHoteles {
 
 
