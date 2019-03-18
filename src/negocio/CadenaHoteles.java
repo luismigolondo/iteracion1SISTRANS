@@ -47,6 +47,7 @@ public class CadenaHoteles {
 	{
 		log.info("Creando reserva servicio: " + id + ", Para el cliente: " + pIdCliente);
 		ReservaServicio reserva = persistencia.RF8adicionarReservaServicio(id, horaInicio, horaFin, pIdCliente, pIdTipoId, servicio);
+		persistencia.cambiarReservaServicioCliente(pIdCliente, servicio);
 		log.info("Reserva creada: " + reserva);
 		return reserva;
 	}
@@ -77,12 +78,31 @@ public class CadenaHoteles {
 		return checkout;
 	}
 	
+	/**
+	 * Encuentra un cliente según su identificador
+	 * @param idCliente - El identificador del cliente buscado
+	 * @return Un objeto del cliente que se busca por id y tipo
+	 */
+	public Cliente darClientePorId (long idCliente)
+	{
+        log.info ("Dar información de un cliente por id: " + idCliente);
+        Cliente cliente = persistencia.darCLientePorId(idCliente);
+        log.info ("Buscando cliente por Id: " + idCliente != null ? idCliente  + "": "NO EXISTE");
+        return cliente;
+	}
 	
 	public long[] limpiarHoteles() {
 		log.info ("Limpiando la BD de Cadena de Hoteles");
         long [] borrrados = persistencia.limpiarParranderos();	
         log.info ("Limpiando la BD de Hoteles: Listo!");
         return borrrados;
+	}
+	public VOCliente adicionarCliente(long idHotel, long idCliente, long tipoId, long idHabitacion, long idServicio, String nombreUsuario,
+			String correoUsuario) {
+		log.info ("Adicionando cliente: " + nombreUsuario);
+        Cliente bebedor = persistencia.adicionarCliente(idHotel, idCliente, tipoId, idHabitacion, idServicio, nombreUsuario, correoUsuario);
+        log.info ("Adicionando cliente: " + nombreUsuario);
+        return bebedor;
 	}
 
 

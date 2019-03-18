@@ -36,6 +36,7 @@ import com.google.gson.stream.JsonReader;
 import negocio.CadenaHoteles;
 import negocio.Gasto;
 import negocio.Hotel;
+import negocio.VOCliente;
 import negocio.VOReservaHabitacion;
 import negocio.VOReservaServicio;
 
@@ -217,20 +218,24 @@ public class InterfazHoteles extends JFrame implements ActionListener{
     {
     	try 
     	{
+    		long hotel =  Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el identificador del hotel", "Ingrese ID del Hotel", JOptionPane.QUESTION_MESSAGE));
     		long id = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el identificador de la reserva a crear", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE));
     		long idCliente = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese la cedula de ciduadania del cliente", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE));
     		long tipoId = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el tipo de identificacion", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE));
+    		String nombreUsuario = JOptionPane.showInputDialog (this, "Ingrese el nombre del usuario para registrar", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE);
+    		String correoUsuario = JOptionPane.showInputDialog (this, "Ingrese el correo electronico del usuario para registrar", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE);
     		long idHabitacion = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el numero de la habitacion", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE));
     		long idPlanDeConsumo = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el plan de consumo para la reserva", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE));
     		String idFinic = JOptionPane.showInputDialog (this, "Ingrese la fecha de inicio DD/MM/AAAA", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE);
     		String idFfin= JOptionPane.showInputDialog (this, "Ingrese la fecha de fin DD/MM/AAAA", "Agregar nueva reserva habitacion", JOptionPane.QUESTION_MESSAGE);
     		
-    		if (id != 0)
+    		if (id != 0 && idCliente != 0 && tipoId != 0&& idHabitacion != 0&& idPlanDeConsumo != 0&& idFinic != null&& idFfin != null)
     		{
+    			hoteles.adicionarCliente(hotel, idCliente, tipoId, idHabitacion, 0, nombreUsuario, correoUsuario);
         		VOReservaHabitacion tb = hoteles.adicionarReservaHabitacion(id, idCliente, tipoId, idHabitacion, idPlanDeConsumo, idFinic, idFfin);
         		if (tb == null)
         		{
-        			throw new Exception ("No se pudo crear la reserva: " + id);
+        			throw new Exception ("No se pudo crear la reserva " + id + ", para el cliente: " + nombreUsuario);
         		}
         		String resultado = "En adicionarReservaHabitacion\n\n";
         		resultado += "Reserva adicionada exitosamente: " + tb;
@@ -290,7 +295,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
     {
     	try
     	{
-    		long id = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el identificador de la reserva a modificar", "Realizar checkin", JOptionPane.QUESTION_MESSAGE));
+    		long id = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el identificador de la reserva para activar el checkin", "Realizar checkin", JOptionPane.QUESTION_MESSAGE));
         	if(id!=0)
         	{
         		long tb = hoteles.registrarLlegadaCliente(pIdReserva);
@@ -298,7 +303,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
         		{
         			throw new Exception("No se puede realizar el checkin a la reserva: "+id);
         		}
-        		String resultado = "En adicionarReservaHabitacion\n\n";
+        		String resultado = "En activar checkin usuario\n\n";
         		resultado += "Checkin realizado exitosamente: " + tb;
     			resultado += "\n Operaci�n terminada";
     			panelDatos.actualizarInterfaz(resultado);
@@ -314,8 +319,8 @@ public class InterfazHoteles extends JFrame implements ActionListener{
     public void RF10registrarConsumoServicio()
     {
     	try {    		
-    		long idHabitacion = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el id de la habitacion", "Ingresar id", JOptionPane.QUESTION_MESSAGE));
-    		long idProducto = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el id del producto", "Ingresar id", JOptionPane.QUESTION_MESSAGE));
+    		long idHabitacion = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el id de la habitacion", "Ingresar Gasto", JOptionPane.QUESTION_MESSAGE));
+    		long idProducto = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el id del producto para cobrar", "Ingresar Gasto", JOptionPane.QUESTION_MESSAGE));
     		
     		if(idHabitacion!=0 && idProducto!=0)
     		{
@@ -341,7 +346,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
     public void RF11registrarSalidaCliente()
     {
     	try {
-    		long id = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el identificador de la reserva a modificar", "Realizar checkout", JOptionPane.QUESTION_MESSAGE));
+    		long id = Long.parseLong(JOptionPane.showInputDialog (this, "Ingrese el identificador de la reserva para checkout", "Realizar checkout", JOptionPane.QUESTION_MESSAGE));
         	if(id!=0)
         	{
         		long tb = hoteles.registrarSalidaCliente(id);
@@ -378,7 +383,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 	 */
 	public void mostrarLogHoteles ()
 	{
-		mostrarArchivo ("hoteles.log");
+		mostrarArchivo ("cadenahoteles.log");
 	}
 	
 	/**
@@ -514,7 +519,7 @@ public class InterfazHoteles extends JFrame implements ActionListener{
 		String resultado = "\n\n ************************************\n\n";
 		resultado += " * Universidad	de	los	Andes	(Bogot�	- Colombia)\n";		
 		resultado += " * Curso: ISIS2304 - Sistemas Transaccionales\n";
-		resultado += " * Proyecto: HotelUniandes\n";
+		resultado += " * Proyecto: HotelUniandes \n";
 		resultado += " * Hecho por Luis Miguel Gomez Londo�o y Juan David Diaz Cristancho\n";
 		resultado += " * Inspirado y referenciado principalmente por el proyecto PARRANDEROS elaborado\n";
 		resultado += " * por el profesor GERMAN BRAVO\n";

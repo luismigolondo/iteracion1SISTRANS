@@ -20,9 +20,7 @@ public class Cliente implements VOCliente {
 	private long [] id;
 	
 	private String nombre;
-			
-	private long numeroIdentificacion;
-	
+				
 	private String correoElectronico;
 	
 	private List<Long> reservasHabitaciones;
@@ -35,7 +33,6 @@ public class Cliente implements VOCliente {
 	{
 		this.id = new long [] {0,0};
 		this.nombre = "";
-		this.numeroIdentificacion = 0;
 		this.correoElectronico = "";
 		this.reservasHabitaciones = new ArrayList<>();
 		this.idHotel = 0;
@@ -51,11 +48,10 @@ public class Cliente implements VOCliente {
 	 * @param idHotel
 	 * @param reservasServicios
 	 */
-	public Cliente(long[] id, String nombre, long numeroIdentificacion, String correoElectronico,
+	public Cliente(long[] id, String nombre, String correoElectronico,
 			List<Long> reservasHabitaciones, long idHotel, List<Long> reservasServicios) {
 		this.id = id;
-		this.nombre = nombre;
-		this.numeroIdentificacion = numeroIdentificacion;
+		this.nombre = nombre;;
 		this.correoElectronico = correoElectronico;
 		this.reservasHabitaciones = reservasHabitaciones;
 		this.idHotel = idHotel;
@@ -88,20 +84,6 @@ public class Cliente implements VOCliente {
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	/**
-	 * @return the numeroIdentificacion
-	 */
-	public long getNumeroIdentificacion() {
-		return numeroIdentificacion;
-	}
-
-	/**
-	 * @param numeroIdentificacion the numeroIdentificacion to set
-	 */
-	public void setNumeroIdentificacion(long numeroIdentificacion) {
-		this.numeroIdentificacion = numeroIdentificacion;
 	}
 
 	/**

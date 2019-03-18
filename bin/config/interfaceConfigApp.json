@@ -18,15 +18,15 @@
 				},
 				{
 					"label": "REG. LLEGADA CLIENTE RF9",
-					"event": "eliminarTipoBebidaPorId"
+					"event": "RF9registrarLlegadaCliente"
 				},
 				{
 					"label": "REG. CONSUMO CLIENTE RF10",
-					"event": "buscarTipoBebidaPorNombre"
+					"event": "RF10registrarConsumoServicio"
 				},
 				{
 					"label": "REG. SALIDA CLIENTE RF11",
-					"event": "buscarTipoBebidaPorNombre"
+					"event": "RF11registrarSalidaCliente"
 				}
 			]
 		},

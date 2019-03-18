@@ -56,4 +56,9 @@ public class Gasto implements VOGasto {
 		this.idProducto = idProducto;
 	}
 	
+	public String toString()
+	{
+		return "Gasto para la habitacion = " + idHabitacion + ", con el item = " + idProducto;
+	}
+	
 }

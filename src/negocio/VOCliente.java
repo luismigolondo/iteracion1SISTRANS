@@ -22,11 +22,6 @@ public interface VOCliente {
 	public String getNombre() ;
 
 	/**
-	 * @return the numeroIdentificacion
-	 */
-	public long getNumeroIdentificacion() ;
-
-	/**
 	 * @return the correoElectronico
 	 */
 	public String getCorreoElectronico();

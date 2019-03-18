@@ -444,5 +444,72 @@ public class PersistenciaCadenaHoteles {
 		}
 	}
 
+	/**
+	 * Metodo que consulta un cliente por su cc.
+	 * @param idCliente el numero de id
+	 * @param idTipo el tipo del id
+	 * @return
+	 */
+	public Cliente darCLientePorId(long idCliente) {
+		return (Cliente) sqlClientes.darClientePorId(pmf.getPersistenceManager(), idCliente);
+	}
+
+	public Cliente adicionarCliente(long idHotel, long idCliente, long tipoId, long idHabitacion, long idServicio, String nombreUsuario,
+			String correoUsuario) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long tupla = sqlClientes.adicionarCliente(pmf.getPersistenceManager(), idCliente, tipoId, idHotel, 
+					idHabitacion, idServicio, nombreUsuario, correoUsuario);
+			tx.commit();
+			
+			log.trace("Insercion de cliente: " + nombreUsuario + " : " + tupla + "tuplas insertadas");
+			return new Cliente(new long[] {idCliente, tipoId}, nombreUsuario, correoUsuario, null, idHotel, null);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+		}
+		
+	}
+
+	public long cambiarReservaServicioCliente(long idCliente, long idSerivcio)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlClientes.cambiarReservaClietne(pm, idCliente, idSerivcio);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
 
 }
